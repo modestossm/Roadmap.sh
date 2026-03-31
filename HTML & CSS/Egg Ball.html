@@ -1,0 +1,119 @@
+<style>
+    
+
+:root {
+  --floor-height: 100px;
+}
+
+@keyframes bounce {
+  0% {
+    top: 20%;
+    animation-timing-function: cubic-bezier(0.75, 0, 0, 1);
+  }
+
+  40% {
+    aspect-ratio: 1;
+  }
+
+  50% {
+    top: calc(100% - var(--floor-height) / 3);
+    transform: translateX(50%) translateY(-100%);
+    aspect-ratio: 1.25;
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+
+  60% {
+    aspect-ratio: 0.75;
+  }
+
+  100% {
+    top: 20%;
+  }
+}
+
+@keyframes resize {
+  0%,
+  100% {
+    width: min(60px, 100vmin - var(--outer-spacing));
+  }
+
+  50% {
+    width: min(100px, 100vmin - var(--outer-spacing));
+  }
+}
+
+body {
+  border-bottom: var(--floor-height) solid grey;
+}
+
+.ball {
+  aspect-ratio: 1;
+
+  animation-name: bounce;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.shadow {
+  animation-name: resize;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@layer demo {
+  :root {
+    --outer-spacing: 40px;
+  }
+
+  * {
+    paddin: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(
+      178.6deg,
+      rgb(232, 245, 253) 3.3%,
+      rgb(252, 253, 255) 109.6%
+    );
+  }
+
+  .ball {
+    z-index: 2;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%) translateY(0%);
+
+    width: min(200px, 50vmin - var(--outer-spacing));
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+      109.6deg,
+      lch(85.76% 65.85 82.69) 11.2%,
+      lch(74.08% 80.53 67.22) 91.1%
+    );
+  }
+
+  .shadow {
+    z-index: 1;
+    position: absolute;
+    right: 50%;
+    bottom: 15px;
+    transform: translateX(50%) translateY(0%);
+
+    aspect-ratio: 1.6;
+
+    border-radius: 50%;
+
+    background-color: #0005;
+  }
+}
+</style>
+
+<div class="ball"></div>
+<div class="shadow"></div>

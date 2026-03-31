@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --bg-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .post {
+            container-name: cont-um;
+            container-type: inline-size;
+        }
+
+        @container cont-um (width > 700px) {
+            .card h2 {
+                width: 700px;
+                margin: .5em auto;
+            }
+
+            .card p {
+                color: brown;
+                max-width: 700px;
+                margin: auto;
+            }
+        }
+
+        @container cont-dois (orientation: portrait) {
+            .card {
+                background-color: aquamarine
+            }
+        }
+
+        .post {
+            background-color: var(--bg-color);
+        }
+
+        p {
+            font-size: clamp(16px, 2vw, 20px);      
+        }
+
+        h2 {
+            font-size: clamp(32px, 4vw, 48px);
+        }
+
+        body {
+            width: calc(100% - 4rem);
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="post">
+        <div class="card">
+            <h2>Sub Título</h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore pariatur repellendus animi aut soluta enim fugiat libero qui possimus cupiditate!</p>
+        </div>
+
+        <div class="card">
+            <h2>Sub Título</h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore pariatur repellendus animi aut soluta enim fugiat libero qui possimus cupiditate!</p>
+        </div>
+
+        <div class="card">
+            <h2>Sub Título</h2>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore pariatur repellendus animi aut soluta enim fugiat libero qui possimus cupiditate!</p>
+        </div>
+    </div>
+
+    <div>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ipsum possimus consequuntur. Tempora fuga aut quibusdam itaque reiciendis dignissimos nam!</p>
+    </div>
+</body>
+</html>
+
+<style>
+
+</style>
+
+<h1>Book Inventory</h1>
+
+<table>
+    <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Category</th>
+      <th scope="col">Status</th>
+      <th scope="col">Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="read">
+      <td>Web</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+    </tr>
+    <tr class="to-read">
+      <td>Web</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+    </tr>
+    <tr class="in-progress">
+      <td>Web</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+      <td>45</td>
+      <td>Web accessibility</td>
+    </tr>
+  </tbody> 
+</table>
