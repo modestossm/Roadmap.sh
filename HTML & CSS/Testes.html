@@ -1,0 +1,230 @@
+<style>
+*{
+  margin-top: 0;
+  padding-top: 0;
+
+}
+
+::selection {
+  color: orangered;
+  background-color: slategray;
+}
+
+.btn {
+  transition: background 250ms ease-in, rotate 350ms ease-in, color 500ms ease-in-out, width 250ms ease-in, height 250ms ease-in;
+  border-radius: 15px;
+  width: 75px;
+  height: 50px;
+  border: none;
+  background-color: aqua;
+}
+
+.btn:hover {
+  background: blue;
+  color: rgb(212, 212, 255);
+  rotate: 360deg;
+  width: 80px;
+  height: 55px;
+}
+
+.rotate-vert-center {
+  width: 50px; height: 50px; background-color: black; color: aliceblue; border-radius: 50%; display: flex; align-items: center; justify-content: center; float: left; margin-right: .5em;
+}
+
+.square {
+  position: fixed;
+  top: 200px;
+  left: 50%;
+}
+
+.squares {
+  background-color: black;
+  color: aliceblue;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: grow 1s ease-in forwards;
+}
+
+@keyframes grow {
+  0% {
+    width: 50px;
+    height: 50px;
+    transform: rotate(0deg);
+  }
+
+  80% {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+
+  99% {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    transform: scale(75px);
+    
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+body {
+  opacity: 0;
+  animation: appear 1s ease-in forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }  
+
+  to {
+    opacity: 100%;
+  }
+}
+
+@media screen and (width >= 600px) {
+  body {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+</style>
+
+<header style="height: 35px; position: sticky; top: 0; z-index: 1; background-color: white; padding-top: 10px;">
+  <nav style="display: flex; align-items: center; justify-content: space-around; max-width: 400px; height: 30px; border:2px solid gray; border-radius: 50px; margin: auto;">
+    <a href=#>Link 1</a>
+    <a href=#>Link 2</a>
+    <a href=#>Link 3</a>
+    <a href=#>Link 4</a>
+  </nav>
+</header>
+
+<pre>
+como funciona
+     A 
+      B 
+       C 
+        D 
+         E
+          F
+</pre>
+
+<var>
+    x<sub>1</sub><sup>2+n</sup> + x<sub>2</sub><sup>log<sub>n</sub></sup> = y(0)
+</var>
+
+<p>
+    x<sub>1</sub><sup>2+n</sup> + x<sub>2</sub><sup>log<sub>n</sub></sup> = y(0)
+</p>
+
+<form>
+  <label for="choose">Would you prefer a banana or a cherry? *</label>
+  <input id="choose" name="i-like" required pattern="[Bb]anana|[Cc]herry" />
+
+  <br> <br>
+
+  <label for="option">Selecione</label>
+  <select name="option" id="option">
+    <option value="">NA</option>
+    <option value="opt 1">opt 1</option>
+    <option value="opt 2">opt 2</option>
+    <option value="opt 3">opt 3</option>
+    <option value="opt 4">opt 4</option>
+  </select>
+
+  <button>Submit</button>
+</form>
+
+ <div>
+    <label for="number">How many would you like?</label>
+    <input type="number" id="number" name="amount" value="1" min="1" max="10" />
+  </div>
+
+  <p>
+    <label for="t1">What's your favorite fruit? *</label>
+    <input
+      type="text"
+      id="t1"
+      name="fruit"
+      list="l1"
+      required
+      pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range" />
+    <datalist id="l1">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Apple</option>
+      <option>Strawberry</option>
+      <option>Lemon</option>
+      <option>Orange</option>
+    </datalist>
+  </p>
+
+  <p>
+  You can use <abbr title="significa alguma coisa">CSS</abbr> (Cascading Style Sheets) to style your
+  <abbr>HTML</abbr> (HyperText Markup Language). Using style sheets, you can
+  keep your <abbr>CSS</abbr> presentation layer and <abbr>HTML</abbr> content
+  layer separate. This is called "separation of concerns."
+</p>
+
+<p> 
+  When Dave asks HAL to open the pod bay door, HAL answers:
+  <q cite="https://www.imdb.com/title/tt0062622/quotes/?item=qt0396921&ref_=ext_shr_lnk">
+    I'm sorry, Dave. I'm afraid I can't do that.
+  </q>
+</p>
+
+<ul style="display: flex; text-decoration: none; list-style: none; border: 2px solid black;">
+  <li>A</li>
+  <li>B</li>
+  <li>C</li>
+  <li>D</li>
+</ul>
+
+<div style="height: 100px; width: 300px; margin: -35 55; background-color: aquamarine; display: block; text-align: center; padding-top: 40px; 
+border: 2px dashed orangered; box-sizing: border-box; box-shadow: inset 0px 0px 15px 10px gold;"> ? </div>
+
+<br> <br> <br> <br> 
+
+<div style="display: flex; flex-flow: row wrap; max-width: 300px; height: 100px; border: 5px solid orangered; gap: .5em; align-items: center; justify-content: space-around;">
+  <div style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: slateblue; outline: 2px solid darkblue; align-self: flex-start;">11</div>
+  <div style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: slateblue; outline: 2px solid darkblue; align-self: flex-end;">22</div>
+  <div style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: slateblue; outline: 2px solid darkblue; align-self: flex-start;">33</div>
+  <div style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background-color: slateblue; outline: 2px solid darkblue; align-self: flex-end;">44</div>
+</div>
+
+<br> <br> 
+
+<div style="columns: 4 200px;">
+
+  <div class="rotate-vert-center">10</div>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quidem, culpa maiores repellat soluta reiciendis ex laboriosam doloribus officia omnis excepturi.
+    Reprehenderit expedita explicabo vel ea quisquam enim incidunt vero!
+  </p>
+
+  <p class="slide">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quidem, culpa maiores repellat soluta reiciendis ex laboriosam doloribus officia omnis excepturi.
+    Reprehenderit expedita explicabo vel ea quisquam enim incidunt vero!
+  </p>
+</div>
+
+<div style="display: flex; justify-content: center; height: 75px;">
+  <button class="btn">Aperte aqui</button>
+</div>
+
+<br> <br> 
+
+<div class="square">
+  <div class="squares">A</div>
+</div>
+
+<br> <br> <br> <br> <br> <br> 
