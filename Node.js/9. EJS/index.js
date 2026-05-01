@@ -2,26 +2,26 @@ import express from "express";
 import ejs from "ejs";
 
 const app = express();
+const port = 3000;
 
-const d = new Date();
-const day = d.getDay();
+app.get("/", (req, res) => {
+    const d = new Date();
+    const day = d.getDay();
 
-export default function getDay(day) {
-    if(day === 0) {
-        return "weekend"
-    } else if(day === 1) {
-        return "weekday"
-    } else if(day === 2) {
-        return "weekday" 
-    } else if(day === 3) {
-        return "weekday" 
-    } else if(day === 4) {
-        return "weekday" 
-    } else if(day === 5) {
-        return "weekday" 
-    } else {
-        return "weekend"
+    let type = "a weekday";
+    let adv = "it's time to work hard!";
+
+    if(day === 0 || day === 6) {
+        type = "the weekend";
+        adv = "it's time to to have fun!";
     }
-}
 
-console.log(getDay(day));
+    res.render("index.ejs", {
+        dayType: type, 
+        advice: adv
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}.`);
+});
