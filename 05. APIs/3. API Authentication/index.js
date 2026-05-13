@@ -3,6 +3,7 @@ import axios from "axios";
 
 const app = express();
 const port = 3000;
+
 const API_URL = "https://secrets-api.appbrewery.com";
 
 const yourUsername = "samssm";
