@@ -45,6 +45,12 @@ app.get("/posts", (req, res) => {
 });
 
 //GET a specific post by id
+app.get("/posts/:id", (req, res) => {
+  const post = posts.find((p) => p.id === parseInt(req.params.id));
+  if (!post) return res.status(404).json({ message: "Post not found" });
+  res.json(post);
+});
+
 
 //POST a new post
 
