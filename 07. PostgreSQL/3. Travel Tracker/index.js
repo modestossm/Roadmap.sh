@@ -1,0 +1,39 @@
+import express from "express";
+import bodyParser from "body-parser";
+import pg from "pg";
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+const db = new pg.Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
+
+db.connect();
+
+let total_visited = 0;
+
+app.get("/", async (req, res) => {
+  const result = await db.query("SELECT country_code FROM visited_countries");
+  let countries = [];
+  result.rows.forEach((country) => {
+    countries.push(country.country_code);
+  });
+  console.log(result.rows);
+  res.render("index.ejs", { countries: countries, total: countries.length });
+  db.end();
+});
+
+app.post("/add", async (req, res) => {
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
