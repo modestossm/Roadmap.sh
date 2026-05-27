@@ -32,25 +32,40 @@ async function checkVisited() {
 app.get("/", async (req, res) => {
   const countries = await checkVisited();
   res.render("index.ejs", { countries: countries, total: countries.length });
-  db.end();
 });
 
 app.post("/add", async (req, res) => {
   const input = req.body["country"];
   console.log(input);
 
-  const result = await db.query(
-    "SELECT country_code FROM countries WHERE country_name = $1", [input]
-  );
+  try{
+    const result = await db.query("SELECT country_code FROM countries WHERE LOWER (country_name) LIKE '%' || $1 || '%'", [input.toLowerCase()]);
 
-  if(result.rows.length !== 0) {
     const data = result.rows[0];
     const countryCode = data.country_code;
 
-    await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [countryCode]);
-  }
+    try {
+      await db.query("INSERT INTO visited_countries (country_code) VALUES ($1)", [countryCode]);
 
-  res.redirect("/");
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+      const countries = await checkVisited();
+      res.render("index.ejs", {
+        countries: countries,
+        total: countries.length,
+        error: "Country has alredy been added, try again."
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    const countries = await checkVisited();
+    res.render("index.ejs", {
+      countries: countries,
+      total: countries.length,
+      error: "Country name does not exist, try again."
+    });
+  }
 });
 
 app.listen(port, () => {
