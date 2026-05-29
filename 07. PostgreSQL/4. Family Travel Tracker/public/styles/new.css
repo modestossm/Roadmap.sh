@@ -63,7 +63,7 @@ label span {
   transition: transform 0.2s ease-in-out;
 }
 label span.red {
-  background: #db2828;
+  background: orangered;
 }
 label span.orange {
   background: #f2711c;
