@@ -1,33 +1,88 @@
 import express from "express";
 import bodyParser from "body-parser";
+import pg from "pg";
+import "dotenv/config";
 
 const app = express();
 const port = 3000;
 
+const db = new pg.Client({
+  user: process.env.DB_USER,                                                                                                                                                                                                                                                                      
+  host: process.env.DB_HOST,                                                                                                                                                                                                                                                                    
+  database: process.env.DB_DATABASE,                                                                                                                                                                                                                                                              
+  password: process.env.DB_PASSWORD,                                                                                                                                                                                                                                                                   
+  port: process.env.DB_PORT 
+});
+
+db.connect();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let items = [
-  { id: 1, title: "Buy milk" },
-  { id: 2, title: "Finish homework" },
-];
+let items = [];
 
-app.get("/", (req, res) => {
-  res.render("index.ejs", {
-    listTitle: "Today",
-    listItems: items,
-  });
+app.get("/", async (req, res) => {
+  try{
+    const result = await db.query("SELECT * FROM item ORDER BY id ASC");
+    items = result.rows;
+
+    res.render("index.ejs", {
+      listTitle: "Today",
+      listItems: items,
+    });
+  } catch(err) {
+    console.log(err);
+  }
 });
 
-app.post("/add", (req, res) => {
+app.post("/add", async (req, res) => {
   const item = req.body.newItem;
-  items.push({ title: item });
-  res.redirect("/");
+  // items.push({ title: item });
+
+  try {
+    await db.query("INSERT INTO item (title) VALUES ($1)", [item]);
+    res.redirect("/");
+  } catch(err) {
+    console.log(err);
+  }
 });
 
-app.post("/edit", (req, res) => {});
+app.post("/edit", async (req, res) => {
+  const id = req.body.updatedItemId;
+  const newText = req.body.updatedItemTitle;
+  // const index = items.findIndex(checkID);
 
-app.post("/delete", (req, res) => {});
+  // function checkID(item) {
+  //   return item.id === id;
+  // }
+
+  // items[index] = {
+  //   id: id,
+  //   title: newText
+  // };
+
+  try {
+    await db.query("UPDATE item SET title = ($1) WHERE id = $2", [newText, id]);
+    res.redirect("/");
+  } catch(err) {
+    console.log(err);
+  }
+
+  res.redirect("/");
+  console.log(id);
+  console.log(newText);
+});
+
+app.post("/delete", async (req, res) => {
+  const id = req.body.deleteItemId;
+
+  try {
+    await db.query("DELETE FROM item WHERE id = $1", [id]);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
