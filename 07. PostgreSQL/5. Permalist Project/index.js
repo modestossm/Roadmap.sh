@@ -67,10 +67,6 @@ app.post("/edit", async (req, res) => {
   } catch(err) {
     console.log(err);
   }
-
-  res.redirect("/");
-  console.log(id);
-  console.log(newText);
 });
 
 app.post("/delete", async (req, res) => {
