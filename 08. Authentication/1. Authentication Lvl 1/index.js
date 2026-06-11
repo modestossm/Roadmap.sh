@@ -9,11 +9,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 const db = new pg.Client({
-  user: process.env.DB.USER,
-  host: process.env.DB.HOST,
-  database: process.env.DB.DATABASE,
-  password: process.env.DB.PASSWORD,
-  port: process.env.DB.PORT,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 db.connect();
@@ -34,18 +34,46 @@ app.post("/register", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
-  const result = await db.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
-
-  console.log(result);
-  res.render("secrets.ejs");
+  try {
+    const checkResult = await db.query('SELECT * FROM users WHERE username = $1', [username]);
+  
+    if(checkResult.rows.length > 0) {
+      res.send("Email alredy exists. Try logging in.");
+    } else {
+      const result = await db.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
+    }
+  
+    console.log(result);
+    res.render("secrets.ejs");
+  } catch(err) {
+    console.log(err);
+  }
 });
 
 app.post("/login", async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
 
+  try {
+    const result = await db.query('SELECT * FROM users WHERE username = $1' [username]);
+
+    if(result.rows.length > 0) {
+      const user = result.rows[0];
+      const storedPassword = user.password;
+
+      if(password === storedPassword) {
+        res.render("secrets.ejs");
+      } else {
+        res.send("Incorrect Password!");
+      }
+    } else {
+      res.send("User not found!");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
   console.log(username);
-  console.log(password);
 });
 
 app.listen(port, () => {
