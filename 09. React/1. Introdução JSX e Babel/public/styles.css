@@ -1,0 +1,15 @@
+.heading {
+    color: orangered;
+}
+
+.food-img {
+    max-width: 50px;
+    max-height: 50px;
+    height: fit-content;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
