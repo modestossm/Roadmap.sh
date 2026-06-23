@@ -10,7 +10,7 @@ const year = currentDate.getFullYear();
 
 ReactDOM.render(
   <div>
-    <h1>Hello {fName + " " + lName}!</h1>
+    <h1 style={{color: "orangered"}}>Hello {fName + " " + lName}!</h1>
     <p>Your lucky number is {num}</p>
 
     <p>Created by {fName}</p>
