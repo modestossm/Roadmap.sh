@@ -4,7 +4,7 @@ import Card from "./Card";
 
 ReactDOM.render(
   <div>
-    <h1>My Contacts</h1>
+    <h1 className="heading">My Contacts</h1>
 
     <Card 
       name="Beyonce"
