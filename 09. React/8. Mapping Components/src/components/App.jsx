@@ -10,9 +10,7 @@ function App() {
       <dl className="dictionary">
         <div className="term">
           <dt>
-            <span className="emoji" role="img" aria-label="Tense Biceps">
-              💪
-            </span>
+            <span className="emoji" role="img" aria-label="Tense Biceps"> 💪 </span>
             <span>Tense Biceps</span>
           </dt>
           <dd>
@@ -22,9 +20,7 @@ function App() {
         </div>
         <div className="term">
           <dt>
-            <span className="emoji" role="img" aria-label="Tense Biceps">
-              🙏
-            </span>
+            <span className="emoji" role="img" aria-label="Tense Biceps"> 🙏 </span>
             <span>Person With Folded Hands</span>
           </dt>
           <dd>
@@ -35,9 +31,7 @@ function App() {
         </div>
         <div className="term">
           <dt>
-            <span className="emoji" role="img" aria-label="Tense Biceps">
-              🤣
-            </span>
+            <span className="emoji" role="img" aria-label="Tense Biceps"> 🤣 </span>
             <span>Rolling On The Floor, Laughing</span>
           </dt>
           <dd>
