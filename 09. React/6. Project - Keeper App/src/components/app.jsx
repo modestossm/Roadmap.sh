@@ -1,13 +1,14 @@
 import React from "react";
 import Heading from "./header";
 import Footer from "./footer";
-import Note from "./note";
+import creatNote from "./mapping";
+import notes from "../notes";
 
 function App() {
   return (
     <div>
       <Heading />
-      <Note />
+      {notes.map(creatNote)}
       <Footer />
     </div>
   );
