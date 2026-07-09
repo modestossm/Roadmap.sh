@@ -1,16 +1,16 @@
 import React from "react";
 
-var isDone = false;
-
-function strike() {
-  isDone = true;
-}
-
-function unStrike() {
-  isDone = false;
-}
-
 function App() {
+  let [isDone, change] = React.useState(false);
+
+  function strike() {
+    change(true)
+  }
+
+  function unStrike() {
+    change(false)
+  }
+
   return (
     <div>
       <p style={isDone ? { textDecoration: "line-through" } : null}>Buy milk</p>
