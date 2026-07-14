@@ -4,19 +4,18 @@ function App() {
   const [fullName, setfullName] = React.useState({fName: "", lName: ""});
 
   function handleChangeName(e) {
-    const newValue = e.target.value;
-    const inputName = e.target.name;
+    const {value, name} = e.target;
 
     setfullName(prevValue => {
-      if(inputName === "fName") {
+      if(name === "fName") {
         return {
-          fName: newValue,
+          fName: value,
           lName: prevValue.lName
         }
-      } else if(inputName === "lName") {
+      } else if(name === "lName") {
         return {
           fName: prevValue.fName,
-          lName: newValue
+          lName: value
         }
       }
     });
