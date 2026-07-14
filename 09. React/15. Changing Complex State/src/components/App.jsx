@@ -43,15 +43,13 @@ function App() {
   return (
     <div className="container">
       <h1>Hello {fullName.fName} {fullName.lName}</h1>
-
       <p>{fullName.email}</p>
-
       <br />
 
       <form>
         <input name="fName" placeholder="First Name" onChange={handleChange}/>
         <input name="lName" placeholder="Last Name" onChange={handleChange}/>
-        <input name="email" placeholder="E-mail" onChange={handleChange}/>
+        <input name="email" placeholder="Email" onChange={handleChange}/>
         <button>Submit</button>
       </form>
     </div>
