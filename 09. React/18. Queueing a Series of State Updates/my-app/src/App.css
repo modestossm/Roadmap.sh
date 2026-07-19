@@ -1,0 +1,12 @@
+.btn {
+    background-color: black;
+    color: aliceblue;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 1.5rem;
+}
+
+.div-main {
+    display: flex;
+    margin: 2rem 4rem;
+}
