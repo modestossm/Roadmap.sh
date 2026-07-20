@@ -1,0 +1,16 @@
+import Queue from './Queueing';
+import UpdateObject from './UpdatingObjects';
+
+export default function App() {
+  return (
+    <>
+      <Queue />
+      <UpdateObject />
+    </>
+  );
+}
+
+// Naming conventions:
+// setEnabled(e => !e);
+// setLastName(ln => ln.reverse());
+// setFriendCount(fc => fc * 2);
