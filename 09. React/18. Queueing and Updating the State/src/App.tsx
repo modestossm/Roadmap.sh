@@ -1,11 +1,13 @@
 import Queue from './Queueing';
 import UpdateObject from './UpdatingObjects';
+import UpdateArray from './UpdatingArrays';
 
 export default function App() {
   return (
     <>
       <Queue />
-      <UpdateObject />
+      <UpdateArray />
+      {/* <UpdateObject /> */}
     </>
   );
 }

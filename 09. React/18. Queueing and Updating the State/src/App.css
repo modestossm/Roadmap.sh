@@ -1,8 +1,7 @@
 .btn {
     background-color: black;
     color: aliceblue;
-    width: 2.5rem;
-    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
     margin: 1.5rem;
 }
 
