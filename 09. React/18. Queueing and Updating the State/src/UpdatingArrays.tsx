@@ -29,7 +29,7 @@ export default function UpdateArray() {
 
     return (
         <>
-            <h1>Inspiring sculptors:</h1>
+            <h1>Add Inspiring sculptors:</h1>
             <input value={name} onChange={e => setName(e.target.value)} />
             <button onClick={handleClick} className="btn">
                 Insert
