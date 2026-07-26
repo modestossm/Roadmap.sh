@@ -18,7 +18,6 @@ export default function Declarative() {
     } catch (err) {
       setStatus('typing');
       setError(err instanceof Error ? err : new Error(String(err)));
-
     }
   }
 
