@@ -1,0 +1,61 @@
+.display {
+  display: flex;
+}
+
+.counter {
+  width: 180px;
+  padding: 24px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  background-color: #ffffff;
+  color: #1f2937;
+  text-align: center;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  transition: transform 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.counter h1 {
+  margin: 0 0 16px;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.counter button {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color 180ms ease;
+}
+
+.counter button:hover {
+  background-color: #1d4ed8;
+}
+
+.counter.hover {
+  transform: translateY(-4px);
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  box-shadow: 0 10px 24px rgb(37 99 235 / 20%);
+}
+
+.counter.fancy {
+  border-color: #9333ea;
+  background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+  box-shadow: 0 4px 12px rgb(147 51 234 / 15%);
+}
+
+.counter.fancy.hover {
+  transform: translateY(-4px);
+  border-color: #9333ea;
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  box-shadow: 0 10px 24px rgb(147 51 234 / 25%);
+}
+
+.counter.fancy h1 {
+  color: #9333ea;
+}
