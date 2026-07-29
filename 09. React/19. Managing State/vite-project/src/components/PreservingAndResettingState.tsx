@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export default function App() {
-  const counter = <Counter />;
+export default function Counter() {
+  const counter = <Count />;
   return (
     <div>
       {counter}
@@ -10,7 +10,7 @@ export default function App() {
   );
 }
 
-function Counter() {
+function Count() {
   const [score, setScore] = useState(0);
   const [hover, setHover] = useState(false);
 
