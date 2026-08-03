@@ -1,14 +1,15 @@
+import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 import type { PropsWithChildren } from 'react';
 
-interface SectionProps extends PropsWithChildren {
-  level: number;
-}
+type SectionProps = PropsWithChildren;
 
-export default function Section({ level, children }: SectionProps) {
+export default function Section({ children }: SectionProps) {
+  const level = useContext(LevelContext);
+  
   return (
-    <section className="section">
-      <LevelContext value={level}>
+     <section className="section">
+      <LevelContext value={level + 1}>
         {children}
       </LevelContext>
     </section>
