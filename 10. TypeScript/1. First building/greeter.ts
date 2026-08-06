@@ -1,7 +1,15 @@
-function greeter(person) {
-    return "Hello, " + person;
+interface Person {
+    fName: string;
+    lName: string;
 }
 
-let user = "James User";
+function greeter(person: Person) {
+    return "Hello, " + person.fName + " " + person.lName;
+}
+
+let user = {
+    fName: "Bruce",
+    lName: "Wayne"
+};
 
 document.body.textContent = greeter(user);
