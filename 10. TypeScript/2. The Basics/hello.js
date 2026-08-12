@@ -1,4 +1,5 @@
 "use strict";
+// String and Date Types
 function greet(person, date) {
     console.log(`Hello ${person}, today is ${date.toDateString()}!`);
 }
@@ -9,3 +10,7 @@ function printCoord(pt) {
     console.log("The coordinate's y value is " + pt.y);
 }
 printCoord({ x: 3, y: 7 });
+// Optional Properties
+function printName(obj) {
+    console.log(obj.last?.toUpperCase());
+}
