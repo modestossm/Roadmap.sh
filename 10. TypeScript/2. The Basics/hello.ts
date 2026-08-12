@@ -16,3 +16,14 @@ printCoord({ x: 3, y: 7 });
 function printName(obj: { first: string; last?: string }) {
   console.log(obj.last?.toUpperCase());
 }
+
+//Union Type
+function welcomePeople(x: string[] | string) {
+  if (Array.isArray(x)) {
+    // Here: 'x' is 'string[]'
+    console.log("Hello, " + x.join(" and "));
+  } else {
+    // Here: 'x' is 'string'
+    console.log("Welcome lone traveler " + x);
+  }
+}
