@@ -34,10 +34,12 @@ type Point = {
   y: number;
 };
  
-// Exactly the same as the earlier example
 function printCoord2(pt: Point) {
   console.log("The coordinate's x value is " + pt.x);
   console.log("The coordinate's y value is " + pt.y);
 }
  
 printCoord({ x: 100, y: 100 });
+
+// Union Types + Type Aliases
+type ID = number | string;

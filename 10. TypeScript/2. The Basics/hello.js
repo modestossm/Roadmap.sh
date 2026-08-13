@@ -25,7 +25,6 @@ function welcomePeople(x) {
         console.log("Welcome lone traveler " + x);
     }
 }
-// Exactly the same as the earlier example
 function printCoord2(pt) {
     console.log("The coordinate's x value is " + pt.x);
     console.log("The coordinate's y value is " + pt.y);
