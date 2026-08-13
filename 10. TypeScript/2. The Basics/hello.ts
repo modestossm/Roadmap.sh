@@ -39,7 +39,20 @@ function printCoord2(pt: Point) {
   console.log("The coordinate's y value is " + pt.y);
 }
  
-printCoord({ x: 100, y: 100 });
+printCoord2({ x: 100, y: 100 });
 
 // Union Types + Type Aliases
 type ID = number | string;
+
+// Interfaces
+interface Points {
+  x: number;
+  y: number;
+}
+ 
+function printCoord3(pt: Points) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoord3({ x: 100, y: 100 });

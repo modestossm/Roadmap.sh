@@ -29,4 +29,10 @@ function printCoord2(pt) {
     console.log("The coordinate's x value is " + pt.x);
     console.log("The coordinate's y value is " + pt.y);
 }
-printCoord({ x: 100, y: 100 });
+printCoord2({ x: 100, y: 100 });
+
+function printCoord3(pt) {
+    console.log("The coordinate's x value is " + pt.x);
+    console.log("The coordinate's y value is " + pt.y);
+}
+printCoord3({ x: 100, y: 100 });
