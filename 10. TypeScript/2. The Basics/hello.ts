@@ -56,3 +56,8 @@ function printCoord3(pt: Points) {
 }
  
 printCoord3({ x: 100, y: 100 });
+
+// Type Assertions
+const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+//const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+

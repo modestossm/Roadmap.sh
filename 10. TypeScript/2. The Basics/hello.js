@@ -30,9 +30,11 @@ function printCoord2(pt) {
     console.log("The coordinate's y value is " + pt.y);
 }
 printCoord2({ x: 100, y: 100 });
-
 function printCoord3(pt) {
     console.log("The coordinate's x value is " + pt.x);
     console.log("The coordinate's y value is " + pt.y);
 }
 printCoord3({ x: 100, y: 100 });
+// Type Assertions
+const myCanvas = document.getElementById("main_canvas");
+//const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
