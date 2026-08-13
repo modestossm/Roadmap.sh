@@ -17,7 +17,7 @@ function printName(obj: { first: string; last?: string }) {
   console.log(obj.last?.toUpperCase());
 }
 
-//Union Type
+//Union Types
 function welcomePeople(x: string[] | string) {
   if (Array.isArray(x)) {
     // Here: 'x' is 'string[]'
@@ -27,3 +27,17 @@ function welcomePeople(x: string[] | string) {
     console.log("Welcome lone traveler " + x);
   }
 }
+
+// Type Aliases
+type Point = {
+  x: number;
+  y: number;
+};
+ 
+// Exactly the same as the earlier example
+function printCoord2(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoord({ x: 100, y: 100 });

@@ -14,7 +14,7 @@ printCoord({ x: 3, y: 7 });
 function printName(obj) {
     console.log(obj.last?.toUpperCase());
 }
-//Union Type
+//Union Types
 function welcomePeople(x) {
     if (Array.isArray(x)) {
         // Here: 'x' is 'string[]'
@@ -25,3 +25,9 @@ function welcomePeople(x) {
         console.log("Welcome lone traveler " + x);
     }
 }
+// Exactly the same as the earlier example
+function printCoord2(pt) {
+    console.log("The coordinate's x value is " + pt.x);
+    console.log("The coordinate's y value is " + pt.y);
+}
+printCoord({ x: 100, y: 100 });
