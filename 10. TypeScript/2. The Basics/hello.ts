@@ -68,3 +68,11 @@ function printText(s: string, alignment: "left" | "right" | "center") {
 printText("Hello, world", "left");
 // erro no 'centre' --> printText("G'day, mate", "centre");
 
+// null and undefined
+function doSomething(x: string | null) {
+  if (x === null) {
+    // do nothing
+  } else {
+    console.log("Hello, " + x.toUpperCase());
+  }
+}
