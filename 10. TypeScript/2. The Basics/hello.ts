@@ -61,3 +61,10 @@ printCoord3({ x: 100, y: 100 });
 const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
 //const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
 
+// Literal Types
+function printText(s: string, alignment: "left" | "right" | "center") {
+  console.log(s, alignment)
+}
+printText("Hello, world", "left");
+// erro no 'centre' --> printText("G'day, mate", "centre");
+

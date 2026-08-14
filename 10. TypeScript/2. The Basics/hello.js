@@ -38,3 +38,12 @@ printCoord3({ x: 100, y: 100 });
 // Type Assertions
 const myCanvas = document.getElementById("main_canvas");
 //const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+// Literal Types
+function printText(s, alignment) {
+    console.log(s, alignment);
+}
+printText("Hello, world", "left");
+// erro no 'centre' --> printText("G'day, mate", "centre");
+function compare(a, b) {
+    return a === b ? 0 : a > b ? 1 : -1;
+}
