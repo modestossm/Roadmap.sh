@@ -44,6 +44,12 @@ function printText(s, alignment) {
 }
 printText("Hello, world", "left");
 // erro no 'centre' --> printText("G'day, mate", "centre");
-function compare(a, b) {
-    return a === b ? 0 : a > b ? 1 : -1;
+// null and undefined
+function doSomething(x) {
+    if (x === null) {
+        // do nothing
+    }
+    else {
+        console.log("Hello, " + x.toUpperCase());
+    }
 }
