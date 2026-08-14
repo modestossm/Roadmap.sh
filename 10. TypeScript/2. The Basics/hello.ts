@@ -76,3 +76,9 @@ function doSomething(x: string | null) {
     console.log("Hello, " + x.toUpperCase());
   }
 }
+// Non-null Assertion Operator (Postfix !)
+function liveDangerously(x?: number | null) {
+  console.log(x!.toFixed());
+}
+// ! (non-null assertion) diz ao TypeScript "isso não é null/undefined" e desliga a checagem de tipo naquela expressão, permitindo chamar .toFixed() sem erro de compilação.
+// Risco: se x for null ou undefined em runtime, vai lançar erro — ! não adiciona proteção real.
