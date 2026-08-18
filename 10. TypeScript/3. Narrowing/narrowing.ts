@@ -67,8 +67,18 @@ type Bird = { fly: () => void };
  
 function move(animal: Fish | Bird) {
   if ("swim" in animal) {
+    // The 'in' operator verifies if the animal contain the 'swin' 
     return animal.swim();
   }
  
   return animal.fly();
+}
+
+// instanceof narrowing
+function logValue(x: Date | string) {
+  if (x instanceof Date) {
+    console.log(x.toUTCString());
+  } else {
+    console.log(x.toUpperCase());
+  }
 }
