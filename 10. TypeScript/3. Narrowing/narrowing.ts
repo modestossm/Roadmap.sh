@@ -82,3 +82,13 @@ function logValue(x: Date | string) {
     console.log(x.toUpperCase());
   }
 }
+
+// Assignments
+let x = Math.random() < 0.5 ? 10 : "hello world!"; //let x: string | number
+
+x = 1; // let x: number
+console.log(x); 
+
+// x = true; // Error: Type 'boolean' is not assignable to type 'string | number'. 
+console.log(x);
+           
