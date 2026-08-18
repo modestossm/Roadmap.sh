@@ -110,3 +110,12 @@ function example2() {
  
   return x; // let x: string | number
 }
+
+// Using type predicates
+function isFish(pet: Fish | Bird): pet is Fish {
+  // pet is Fish is our type predicate.
+  // A predicate takes the form parameterName is Type, 
+  // where parameterName must be the name of a parameter from the current function signature.
+  return (pet as Fish).swim !== undefined;
+}
+
