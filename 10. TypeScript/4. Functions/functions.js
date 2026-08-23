@@ -28,6 +28,19 @@ fn(Date);
 // Generic Functions
 function map(arr, func) {
     // TypeScript could infer both the type of the Input type parameter (from the given string array), 
-    // as well as the Output type parameter based on the return value of the function expression 
+    // as well as the Output type parameter based on the return value of the function expression (number).
     return arr.map(func);
 }
+const parsed = map(["1", "2", "3"], (n) => parseInt(n));
+// Generic Functions - Constraints
+function longest(a, b) {
+    if (a.length >= b.length) {
+        return a;
+    }
+    else {
+        return b;
+    }
+}
+const longerArray = longest([1, 2], [1, 2, 3]); // longerArray is of type 'number[]'
+const longerString = longest("alice", "bob"); // longerString is of type 'alice' | 'bob'
+// const notOK = longest(10, 100); // Error TS2345: Argument of type 'number' is not assignable to parameter of type '{ length: number; }'
