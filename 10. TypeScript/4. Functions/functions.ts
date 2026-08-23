@@ -44,3 +44,10 @@ function fn(ctor: CallOrConstruct) {
 }
  
 fn(Date);
+
+// Generic Functions
+function map<Input, Output>(arr: Input[], func: (arg: Input) => Output): Output[] {
+  // TypeScript could infer both the type of the Input type parameter (from the given string array), 
+  // as well as the Output type parameter based on the return value of the function expression 
+  return arr.map(func);
+}
