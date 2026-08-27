@@ -138,3 +138,10 @@ function makeDate(mOrTimestamp: number, d?: number, y?: number): Date {
 const d1 = makeDate(12345678);
 const d2 = makeDate(5, 5, 5);
 // const d3 = makeDate(1, 3); // Error: No overload expects 2 arguments, but overloads do exist that expect either 1 or 3 arguments.
+
+// Rest Parameters
+function multiply(n: number, ...m: number[]) {
+  // The rest parameter can accept a variety of fixed argument counts
+  return m.map((x) => n * x);
+}
+const c = multiply(10, 1, 2, 3, 4); // 'a' gets value [10, 20, 30, 40]
