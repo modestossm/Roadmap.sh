@@ -68,3 +68,18 @@ const longerArray = longest([1, 2], [1, 2, 3]); // longerArray is of type 'numbe
 const longerString = longest("alice", "bob"); // longerString is of type 'alice' | 'bob'
 
 // const notOK = longest(10, 100); // Error TS2345: Argument of type 'number' is not assignable to parameter of type '{ length: number; }'
+
+// Guidelines for Writing Good Generic Functions
+// 1. Push Type Parameters Down
+function firstElement1<Type>(arr: Type[]) {
+  return arr[0];
+}
+ 
+function firstElement2<Type extends any[]>(arr: Type) {
+  return arr[0];
+}
+ 
+// a: number (good)
+const a = firstElement1([1, 2, 3]);
+// b: any (bad)
+const b = firstElement2([1, 2, 3]);
