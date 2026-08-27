@@ -98,3 +98,15 @@ function filter2<Type, Func extends (arg: Type) => boolean>(
   return arr.filter(func);
 }
 
+// 3. Type Parameters Should Appear Twice
+// Rule: If a type parameter only appears in one location, strongly reconsider if you actually need it
+
+function greet1<Str extends string>(s: Str) { //This is the bad way to use Type parameters, because these are for relating the types of multiple values.
+  console.log("Hello, " + s);
+} 
+greet1("world");
+
+function greet2(s: string) { // This is a simpler version
+  console.log("Hello, " + s);
+}
+greet2("world");

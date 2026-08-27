@@ -66,3 +66,13 @@ function filter2(arr, func // It's bad, the extra Func type argument exist for n
 ) {
     return arr.filter(func);
 }
+// 3. Type Parameters Should Appear Twice
+// Rule: If a type parameter only appears in one location, strongly reconsider if you actually need it
+function greet1(s) {
+    console.log("Hello, " + s);
+}
+greet1("world");
+function greet2(s) {
+    console.log("Hello, " + s);
+}
+greet2("world");
