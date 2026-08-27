@@ -110,3 +110,17 @@ function greet2(s: string) { // This is a simpler version
   console.log("Hello, " + s);
 }
 greet2("world");
+
+// Optional Parameters
+function myForEach(arr: any[], callback: (arg: any, index?: number) => void) {
+  for (let i = 0; i < arr.length; i++) {
+    // The index parameter is optional
+    callback(arr[i]);
+  }
+}
+
+myForEach([1, 2, 3], (a, i) => {
+  //console.log(i.toFixed());
+// Error: 'i' is possibly 'undefined'.
+// Rule: When writing a function type for a callback, never write an optional parameter unless you intend to call the function without passing that argument
+});
