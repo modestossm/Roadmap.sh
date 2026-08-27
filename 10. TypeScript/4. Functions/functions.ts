@@ -71,6 +71,7 @@ const longerString = longest("alice", "bob"); // longerString is of type 'alice'
 
 // Guidelines for Writing Good Generic Functions
 // 1. Push Type Parameters Down
+// Rule: When possible, use the type parameter itself rather than constraining it
 function firstElement1<Type>(arr: Type[]) {
   return arr[0];
 }
@@ -83,3 +84,17 @@ function firstElement2<Type extends any[]>(arr: Type) {
 const a = firstElement1([1, 2, 3]);
 // b: any (bad)
 const b = firstElement2([1, 2, 3]);
+
+// 2. Use Fewer Type Parameters
+// Rule: Always use as few type parameters as possible
+function filter1<Type>(arr: Type[], func: (arg: Type) => boolean): Type[] {
+  return arr.filter(func);
+}
+ 
+function filter2<Type, Func extends (arg: Type) => boolean>(
+  arr: Type[],
+  func: Func // It's bad, the extra Func type argument exist for no reason.
+): Type[] {
+  return arr.filter(func);
+}
+

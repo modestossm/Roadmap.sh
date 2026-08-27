@@ -46,6 +46,7 @@ const longerString = longest("alice", "bob"); // longerString is of type 'alice'
 // const notOK = longest(10, 100); // Error TS2345: Argument of type 'number' is not assignable to parameter of type '{ length: number; }'
 // Guidelines for Writing Good Generic Functions
 // 1. Push Type Parameters Down
+// Rule: When possible, use the type parameter itself rather than constraining it
 function firstElement1(arr) {
     return arr[0];
 }
@@ -56,3 +57,12 @@ function firstElement2(arr) {
 const a = firstElement1([1, 2, 3]);
 // b: any (bad)
 const b = firstElement2([1, 2, 3]);
+// 2. Use Fewer Type Parameters
+// Rule: Always use as few type parameters as possible
+function filter1(arr, func) {
+    return arr.filter(func);
+}
+function filter2(arr, func // It's bad, the extra Func type argument exist for no reason.
+) {
+    return arr.filter(func);
+}
