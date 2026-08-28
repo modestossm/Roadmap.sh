@@ -145,3 +145,9 @@ function multiply(n: number, ...m: number[]) {
   return m.map((x) => n * x);
 }
 const c = multiply(10, 1, 2, 3, 4); // 'a' gets value [10, 20, 30, 40]
+
+// Parameter Destructuring
+type ABC = { a: number; b: number; c: number };
+function sum({ a, b, c }: ABC) {
+  console.log(a + b + c);
+}
