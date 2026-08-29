@@ -1,4 +1,4 @@
-// Object Types - Optional Properties
+// 1. Object Types - Optional Properties
 interface PaintOptions {
     shape: MyShape;
     xPos?: number; // The ? after de xPos indicates the optional property
@@ -24,7 +24,7 @@ paintShape({ shape, yPos: 100 });
 paintShape({ shape, xPos: 100, yPos: 100 });
 
 
-// readonly Properties
+// 2. readonly Properties
 interface SomeType {
   readonly prop: string;
 }
@@ -37,7 +37,7 @@ function doSomething(obj: SomeType) {
   // obj.prop = "hello"; // Error: Cannot assign to 'prop' because it is a read-only property.
 }
 
-// Excess Property Checks
+// 3. Excess Property Checks
 interface SquareConfig {
   color?: string;
   width?: number;
@@ -58,7 +58,24 @@ let mySquare2 = createSquare({ width: 100, opacity: 0.5 } as SquareConfig); // I
 
 // However, a better approach might be to add a string index signature if you’re sure that the object can have some extra properties that are used in some special way.
 interface SquareConfig {
-  [propName: string]: unknown;
+    // declaration merging
+    [propName: string]: unknown;
 }
+let mySquare3 = createSquare({ colour: "red", width: 100 }); // It's OK 
 
-let mySquare3 = createSquare({ colour: "red", width: 100 }); // It's OK       
+
+// 4. Extending Types
+interface Colorful {
+  color: string;
+}
+ 
+interface Circle {
+  radius: number;
+}
+ 
+interface ColorfulCircle extends Colorful, Circle {}
+ 
+const cc: ColorfulCircle = {
+  color: "red",
+  radius: 42,
+};
