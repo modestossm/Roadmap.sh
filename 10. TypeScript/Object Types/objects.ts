@@ -65,6 +65,7 @@ let mySquare3 = createSquare({ colour: "red", width: 100 }); // It's OK
 
 
 // 4. Extending Types
+// interfaces allowed us to build up new types from other types by extending them.
 interface Colorful {
   color: string;
 }
@@ -79,3 +80,13 @@ const cc: ColorfulCircle = {
   color: "red",
   radius: 42,
 };
+
+// Intersection Types
+// An intersection type is defined using the & operator.
+interface Colorful {
+  color: string;
+}
+interface Circle {
+  radius: number;
+}
+type ColorfulCircles = Colorful & Circle;
