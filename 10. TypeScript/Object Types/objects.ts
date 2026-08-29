@@ -36,3 +36,29 @@ function doSomething(obj: SomeType) {
   // But we can't re-assign it.
   // obj.prop = "hello"; // Error: Cannot assign to 'prop' because it is a read-only property.
 }
+
+// Excess Property Checks
+interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+ 
+function createSquare(config: SquareConfig): { color: string; area: number } {
+  return {
+    color: config.color || "red",
+    area: config.width ? config.width * config.width : 20,
+  };
+}
+ 
+// let mySquare1 = createSquare({ colour: "red", width: 100 });
+//Error: Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+
+// Getting around these checks is actually really simple. The easiest method is to just use a type assertion:
+let mySquare2 = createSquare({ width: 100, opacity: 0.5 } as SquareConfig); // It's OK
+
+// However, a better approach might be to add a string index signature if you’re sure that the object can have some extra properties that are used in some special way.
+interface SquareConfig {
+  [propName: string]: unknown;
+}
+
+let mySquare3 = createSquare({ colour: "red", width: 100 }); // It's OK       
