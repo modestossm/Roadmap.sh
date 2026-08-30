@@ -81,7 +81,7 @@ const cc: ColorfulCircle = {
   radius: 42,
 };
 
-// Intersection Types
+// 5. Intersection Types
 // An intersection type is defined using the & operator.
 interface Colorful {
   color: string;
@@ -90,3 +90,23 @@ interface Circle {
   radius: number;
 }
 type ColorfulCircles = Colorful & Circle;
+
+
+// 6. Interface Extension vs. Intersection
+// The principal difference between the two is how conflicts are handled
+// If interfaces are defined with the same name, TypeScript will attempt to merge them if the properties are compatible.
+// If the properties are not compatible (i.e., same property name but different types), TypeScript will raise an error.
+// In contrast, the Intersection Type will compile, but it results in a never type:
+
+interface Person1 {
+  name: string;
+}
+ 
+interface Person2 {
+  name: number;
+}
+ 
+type Staff = Person1 & Person2
+ 
+declare const staffer: Staff;
+staffer.name; // Unexpected result => (property) name: never
