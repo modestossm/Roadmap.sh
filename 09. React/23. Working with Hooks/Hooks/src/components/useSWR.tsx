@@ -1,8 +1,14 @@
 // Sem useSWR (jeito manual)
+import {useState, useEffect} from 'react'
+
+type Usuario = {
+  nome: string;
+};
+
 function Perfil1() {
-  const [dados, setDados] = useState(null);
+  const [dados, setDados] = useState<Usuario | null>(null);
   const [carregando, setCarregando] = useState(true);
-  const [erro, setErro] = useState(null);
+  const [erro, setErro] = useState<unknown>(null);
 
   useEffect(() => {
     axios.get('/api/usuario')
@@ -13,7 +19,7 @@ function Perfil1() {
 
   if (carregando) return <p>Carregando...</p>;
   if (erro) return <p>Erro!</p>;
-  return <p>{dados.nome}</p>;
+  return <p>{dados?.nome}</p>;
 }
 
 // Com useSWR
@@ -21,12 +27,12 @@ function Perfil1() {
 import useSWR from 'swr';
 import axios from 'axios';
 
-const fetcher = url => axios.get(url).then(res => res.data);
+const fetcher = (url: string): Promise<Usuario> => axios.get<Usuario>(url).then(res => res.data);
 
 function Perfil2() {
-  const { data, error, isLoading } = useSWR('/api/usuario', fetcher);
+  const { data, error, isLoading } = useSWR<Usuario>('/api/usuario', fetcher);
 
   if (isLoading) return <p>Carregando...</p>;
   if (error) return <p>Erro!</p>;
-  return <p>{data.nome}</p>;
+  return <p>{data?.nome}</p>;
 }
