@@ -142,3 +142,14 @@ let myArray: string[] = ["hello", "world"];
 // either of these work:
 doSomething2(myArray);
 doSomething2(new Array("hello", "world"));
+
+// 7.2 The ReadonlyArray Type
+// The ReadonlyArray is a special type that describes arrays that shouldn’t be changed.
+
+function doStuff(values: ReadonlyArray<string>) {
+  const copy = values.slice(); // We can read from 'values'...
+  console.log(`The first value is ${values[0]}`);
+ 
+  // ...but we can't mutate 'values':
+  // values.push("hello!"); // Error: Property 'push' does not exist on type 'readonly string[]'.
+}
