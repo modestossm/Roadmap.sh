@@ -110,3 +110,23 @@ type Staff = Person1 & Person2
  
 declare const staffer: Staff;
 staffer.name; // Unexpected result => (property) name: never
+
+
+// 7. Generic Object Types
+interface Box<Type> {
+  contents: Type; 
+}
+interface StringBox {
+  contents: string;
+}
+// Box<string> and StringBox work identically:
+let boxA: Box<string> = { contents: "hello" };
+boxA.contents;
+ 
+let boxB: StringBox = { contents: "world" };
+boxB.contents;
+
+// We can avoid overloads entirely by instead using generic functions:
+function setContents<Type>(box: Box<Type>, newContents: Type) {
+  box.contents = newContents;
+}
