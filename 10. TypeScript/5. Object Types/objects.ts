@@ -164,3 +164,8 @@ function doSomething3(pair: [string, number]) {
 }
  
 doSomething3(["hello", 42]);
+
+// 7.34 readonly Tuple Types
+function doSomething4(pair: readonly [string, number]) {
+  // pair[0] = "hello!"; // Error: Cannot assign to '0' because it is a read-only property.
+}
