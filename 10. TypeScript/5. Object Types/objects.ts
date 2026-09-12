@@ -130,3 +130,15 @@ boxB.contents;
 function setContents<Type>(box: Box<Type>, newContents: Type) {
   box.contents = newContents;
 }
+
+// 7.1 The Array Type 
+// It’s ideal for data structures to work this way so that they’re re-usable across different data types.
+function doSomething2(value: Array<string>) {
+  // ...
+}
+ 
+let myArray: string[] = ["hello", "world"];
+ 
+// either of these work:
+doSomething2(myArray);
+doSomething2(new Array("hello", "world"));
