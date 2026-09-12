@@ -153,3 +153,14 @@ function doStuff(values: ReadonlyArray<string>) {
   // ...but we can't mutate 'values':
   // values.push("hello!"); // Error: Property 'push' does not exist on type 'readonly string[]'.
 }
+
+// 7.3 Tuple Types
+// A tuple type is another sort of Array type that knows exactly how many elements it contains, and exactly which types it contains at specific positions.
+
+function doSomething3(pair: [string, number]) {
+  const a = pair[0]; // const a: string
+  const b = pair[1]; // const b: number
+  // const c = pair[2]; // Error: Tuple type '[string, number]' of length '2' has no element at index '2'.
+}
+ 
+doSomething3(["hello", 42]);
