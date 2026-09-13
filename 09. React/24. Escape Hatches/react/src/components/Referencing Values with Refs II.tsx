@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function Stopwatch() {
   const [startTime, setStartTime] = useState<number | null>(null);
   const [now, setNow] = useState<number | null>(null);
+  const intervalRef = useRef<number | null>(null);
 
   function handleStart() {
-    // Start counting.
     setStartTime(Date.now());
     setNow(Date.now());
 
-    setInterval(() => {
-      // Update the current time every 10ms.
+    clearInterval(intervalRef.current ?? undefined);
+    intervalRef.current = setInterval(() => {
       setNow(Date.now());
     }, 10);
+  }
+
+  function handleStop() {
+    clearInterval(intervalRef.current ?? undefined);
   }
 
   let secondsPassed = 0;
@@ -23,8 +27,11 @@ export default function Stopwatch() {
   return (
     <>
       <h1 className="mx-20 mt-10">Time passed: {secondsPassed.toFixed(3)}</h1>
-      <button onClick={handleStart} className="mx-20 mt-2 px-4 py-2 rounded bg-blue-500">
+      <button onClick={handleStart} className="ms-20 me-2  mt-2 px-4 py-2 rounded bg-blue-500">
         Start
+      </button>
+      <button onClick={handleStop} className="ms-2 mt-2 px-4 py-2 rounded bg-blue-500">
+        Stop
       </button>
     </>
   );
