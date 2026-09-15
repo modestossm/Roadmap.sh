@@ -31,7 +31,7 @@ export default function TodoList() {
       <input
         value={text}
         onChange={e => setText(e.target.value)}
-        className="border-2"
+        className="border-2 rounded"
       />
       <ul ref={listRef} className="ms-20 mt-2">
         {todos.map(todo => (

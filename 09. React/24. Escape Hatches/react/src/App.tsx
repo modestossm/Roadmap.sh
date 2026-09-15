@@ -4,6 +4,7 @@ import Form from "./components/Manipulating the DOM with Refs I";
 import Cats from "./components/Manipulating the DOM with Refs II";
 import TodoList from "./components/Flushing state";
 import AppVideoPlayer from "./components/useEffects";
+import AppPlayground from "./components/useEffect firing twice in dev";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Form />
       <Cats />
       <AppVideoPlayer />
+      <AppPlayground />
       <TodoList />
     </>
   );
