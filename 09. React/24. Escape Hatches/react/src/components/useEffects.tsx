@@ -15,7 +15,7 @@ function VideoPlayer({ src, isPlaying }: VideoPlayerProps) {
     } else {
       ref.current?.pause();
     }
-  });
+  }, [isPlaying]); // The dependencies are declared (the isPlaying within Array), so the useEffetc will re-render only if the isPlaying changed
 
   return <video ref={ref} src={src} loop playsInline className="mx-20 w-160 rounded-lg shadow-md"/>;
 }
