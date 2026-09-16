@@ -5,6 +5,7 @@ import Cats from "./components/Manipulating the DOM with Refs II";
 import TodoList from "./components/Flushing state";
 import AppVideoPlayer from "./components/useEffects";
 import AppPlayground from "./components/useEffect firing twice in dev";
+import Time from "./components/useMemo";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <AppVideoPlayer />
       <AppPlayground />
       <TodoList />
+      <Time />
     </>
   );
 }
