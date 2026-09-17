@@ -1,4 +1,12 @@
 // Generics
 function identity<Type>(arg: Type): Type {
-  return arg;
+    // This Type allows us to capture the type the user provides (e.g. number), so that we can use that information later.
+    // Here, we use Type again as the return type.
+    return arg;
 }
+
+// Here we use type argument inference (the most common) 
+// That is, we want the compiler to set the value of Type for us automatically based on the type of the argument we pass in:
+let output = identity("myString");
+
+
