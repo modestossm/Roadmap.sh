@@ -10,3 +10,8 @@ function identity<Type>(arg: Type): Type {
 let output = identity("myString");
 
 
+// 1. Working with Generic Type Variables
+function loggingIdentity1<Type>(arg: Type): Type {
+  // console.log(arg.length); // Error: Property 'length' does not exist on type 'Type'.
+  return arg;
+}
