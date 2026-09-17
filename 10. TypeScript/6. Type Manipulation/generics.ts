@@ -12,11 +12,24 @@ let output = identity("myString");
 
 // 1. Working with Generic Type Variables
 function loggingIdentity1<Type>(arg: Type): Type {
-  // console.log(arg.length); // Error: Property 'length' does not exist on type 'Type'.
-  return arg;
+    // console.log(arg.length); // Error: Property 'length' does not exist on type 'Type'.
+    return arg;
 }
 
 function loggingIdentity2<Type>(arg: Type[]): Type[] {
-  console.log(arg.length); // Since we’re working with arrays, the .length member should be available, because arrays have .length property.
-  return arg;
+    console.log(arg.length); // Since we’re working with arrays, the .length member should be available, because arrays have .length property.
+    return arg;
 }
+
+
+// 2. Generic Types
+interface GenericIdentitiesFn {
+    // generic interface
+    <Type>(arg: Type): Type;
+}
+ 
+function identities<Type>(arg: Type): Type {
+    return arg;
+}
+ 
+let myIdentity: GenericIdentitiesFn = identities;
