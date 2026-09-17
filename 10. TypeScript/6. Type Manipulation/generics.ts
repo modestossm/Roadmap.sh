@@ -23,13 +23,26 @@ function loggingIdentity2<Type>(arg: Type[]): Type[] {
 
 
 // 2. Generic Types
-interface GenericIdentitiesFn {
+interface GenericIdentitiesFn1 {
     // generic interface
     <Type>(arg: Type): Type;
 }
  
-function identities<Type>(arg: Type): Type {
+function identities1<Type>(arg: Type): Type {
     return arg;
 }
  
-let myIdentity: GenericIdentitiesFn = identities;
+let myIdentity1: GenericIdentitiesFn1 = identities1;
+
+// We may want to move the generic parameter to be a parameter of the whole interface
+// This makes the type parameter visible to all the other members of the interface:
+interface GenericIdentitiesFn2<Type> {
+    // generic interface
+    (arg: Type): Type;
+}
+ 
+function identities2<Type>(arg: Type): Type {
+    return arg;
+}
+// Instead of describing a generic function, we now have a non-generic function signature that is a part of a generic type
+let myIdentity2: GenericIdentitiesFn2<number> = identities2;
