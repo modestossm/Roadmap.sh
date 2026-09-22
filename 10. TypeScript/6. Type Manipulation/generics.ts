@@ -46,3 +46,6 @@ function identities2<Type>(arg: Type): Type {
 }
 // Instead of describing a generic function, we now have a non-generic function signature that is a part of a generic type
 let myIdentity2: GenericIdentitiesFn2<number> = identities2;
+
+
+// 3. Generic Classes
