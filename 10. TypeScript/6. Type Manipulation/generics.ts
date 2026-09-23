@@ -75,3 +75,16 @@ function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
 }
 
 loggingIdentity({ length: 10, value: 3 });
+
+
+// 5. Using Type Parameters in Generic Constraints
+// We can declare a type parameter that is constrained by another type parameter
+
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+ 
+let x = { a: 1, b: 2, c: 3, d: 4 };
+ 
+getProperty(x, "a");
+// getProperty(x, "m"); // Error: Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
