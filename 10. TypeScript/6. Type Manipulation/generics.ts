@@ -49,4 +49,13 @@ let myIdentity2: GenericIdentitiesFn2<number> = identities2;
 
 
 // 3. Generic Classes
-// Teste Git
+class GenericNumber<NumType> {
+  zeroValue?: NumType;
+  add?: (x: NumType, y: NumType) => NumType;
+}
+ 
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
