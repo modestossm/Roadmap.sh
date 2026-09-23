@@ -136,3 +136,22 @@ declare function create<T extends HTMLElement = HTMLDivElement, U extends HTMLEl
 const div = create(); // const div: Container<HTMLDivElement, HTMLDivElement[]>
  
 const p = create(new HTMLParagraphElement()); // const p: Container<HTMLParagraphElement, HTMLParagraphElement[]>
+
+
+// 8. Variance Annotations
+// Covariance and contravariance are type theory terms that describe what the relationship between two generic types is
+//Never write a variance annotation that doesn’t match the structural variance!
+
+// Contravariant annotation:
+interface Consumer<in T> {
+  consume: (arg: T) => void;
+}
+// Covariant annotation:
+interface Producer<out T> {
+  make(): T;
+}
+// Invariant annotation:
+interface ProducerConsumer<in out T> {
+  consume: (arg: T) => void;
+  make(): T;
+}
