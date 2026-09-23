@@ -59,3 +59,19 @@ myGenericNumber.zeroValue = 0;
 myGenericNumber.add = function (x, y) {
   return x + y;
 };
+
+// 4. Generic Constraints
+// We’ll create an interface that describes our constraint
+// Here, we’ll create an interface that has a single .length property and 
+// then we’ll use this interface and the extends keyword to denote our constraint:
+
+interface Lengthwise {
+  length: number;
+}
+ 
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length); // Now we know it has a .length property, so no error
+  return arg;
+}
+
+loggingIdentity({ length: 10, value: 3 });
