@@ -88,3 +88,35 @@ let x = { a: 1, b: 2, c: 3, d: 4 };
  
 getProperty(x, "a");
 // getProperty(x, "m"); // Error: Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
+
+
+// 6. Using Class Types in Generics
+// This pattern is used to power the mixins design pattern
+
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+ 
+class ZooKeeper {
+  nametag: string = "Mikle";
+}
+ 
+class Animal {
+  numLegs: number = 4;
+}
+ 
+class Bee extends Animal {
+  numLegs = 6;
+  keeper: BeeKeeper = new BeeKeeper();
+}
+ 
+class Lion extends Animal {
+  keeper: ZooKeeper = new ZooKeeper();
+}
+ 
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+ 
+createInstance(Lion).keeper.nametag;
+createInstance(Bee).keeper.hasMask;
