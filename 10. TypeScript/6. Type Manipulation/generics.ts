@@ -155,3 +155,23 @@ interface ProducerConsumer<in out T> {
   consume: (arg: T) => void;
   make(): T;
 }
+
+// More examples
+class Animals {}
+class Dog extends Animals { bark() {} }
+
+// in = Contravariant (T: only in)
+interface Consumers<in T> {
+  accept: (value: T) => void;
+}
+
+// out = Covariant (T: only out)
+interface Producers<out T> {
+  get: () => T;
+}
+
+// in out = Invariant (T: in and out)
+interface Box<in out T> {
+  get: () => T;
+  set: (value: T) => void;
+}
