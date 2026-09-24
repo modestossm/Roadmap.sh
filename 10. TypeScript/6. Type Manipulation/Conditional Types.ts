@@ -61,3 +61,12 @@ interface Dog {
 type EmailMessageContents = MessageOf<Email>; // type EmailMessageContents = string
  
 type DogMessageContents = MessageOf<Dog>; // type DogMessageContents = never
+
+// As another example, we could also write a type called Flatten that flattens array types to their element types:
+type Flatten<T> = T extends any[] ? T[number] : T;
+ 
+// Extracts out the element type.
+type Str = Flatten<string[]>; // type Str = string
+ 
+// Leaves the type alone.
+type Num = Flatten<number>; // type Num = number
