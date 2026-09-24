@@ -11,3 +11,37 @@ interface Dog extends Animal {
 type Example1 = Dog extends Animal ? number : string; // type Example1 = number
  
 type Example2 = RegExp extends Animal ? number : string; // type Example2 = string
+
+// Conditional types take a form that looks a little like conditional expressions (condition ? trueExpression : falseExpression) in JavaScript:
+// SomeType extends OtherType ? TrueType : FalseType;
+
+// The power of conditional types comes from using them with generics:
+interface IdLabel {
+  id: number /* some fields */;
+}
+interface NameLabel {
+  name: string /* other fields */;
+}
+ 
+function createLabel(id: number): IdLabel;
+function createLabel(name: string): NameLabel;
+function createLabel(nameOrId: string | number): IdLabel | NameLabel;
+function createLabel(nameOrId: string | number): IdLabel | NameLabel {
+  throw "unimplemented";
+}
+
+// If a library has to make the same sort of choice over and over throughout its API, this becomes cumbersome.
+// For every new type createLabel can handle, the number of overloads grows exponentially.
+// Instead, we can encode that logic in a conditional type:
+type NameOrId<T extends number | string> = T extends number ? IdLabel : NameLabel;
+
+function createLabels<T extends number | string>(idOrName: T): NameOrId<T> {
+    // We can then use that conditional type to simplify our overloads down to a single function with no overloads.
+    throw "unimplemented";
+}
+ 
+let a = createLabels("typescript"); // let a: NameLabel
+ 
+let b = createLabels(2.8); // let b: IdLabel
+ 
+let c = createLabels(Math.random() ? "hello" : 42); // let c: NameLabel | IdLabel
