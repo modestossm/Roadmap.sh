@@ -41,3 +41,24 @@ type MaybeUser = {
 };
  
 type User = Concrete<MaybeUser>; // type User = { id: string, name: string, age: number }
+
+
+// 2. Key Remapping via as
+// We can re-map keys in mapped types with an as clause in a mapped type:
+
+// type MappedTypeWithNewProperties<Type> = {
+//     [Properties in keyof Type as NewKeyType]: Type[Properties]
+// }
+
+// We can leverage features like template literal types to create new property names from prior ones:
+type Getters<Type> = {
+    [Property in keyof Type as `get${Capitalize<string & Property>}`]: () => Type[Property]
+};
+ 
+interface Persons {
+    name: string;
+    age: number;
+    location: string;
+}
+ 
+type LazyPerson = Getters<Persons>; // type LazyPerson = { getName: () => string, getAge: () => number, getLocation: () => string }
