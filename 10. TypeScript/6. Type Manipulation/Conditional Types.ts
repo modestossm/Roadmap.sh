@@ -70,3 +70,15 @@ type Str = Flatten<string[]>; // type Str = string
  
 // Leaves the type alone.
 type Num = Flatten<number>; // type Num = number
+
+
+// 2. Inferring Within Conditional Types
+// We could have inferred the element type in Flatten instead of fetching it out “manually” with an indexed access type:
+
+type GetReturnType<Type> = Type extends (...args: never[]) => infer Return ? Return : never;
+ 
+type Num1 = GetReturnType<() => number>; // type Num = number
+ 
+type Str1 = GetReturnType<(x: string) => string>; // type Str = string
+ 
+type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>; // type Bools = boolean[]
