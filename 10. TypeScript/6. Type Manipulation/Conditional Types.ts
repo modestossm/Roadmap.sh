@@ -82,3 +82,9 @@ type Num1 = GetReturnType<() => number>; // type Num = number
 type Str1 = GetReturnType<(x: string) => string>; // type Str = string
  
 type Bools = GetReturnType<(a: boolean, b: boolean) => boolean[]>; // type Bools = boolean[]
+
+
+// 3. Distributive Conditional Types
+type ToArray<Type> = Type extends any ? Type[] : never;
+ 
+type StrArrOrNumArr = ToArray<string | number>; // type StrArrOrNumArr = string[] | number[]
