@@ -45,3 +45,19 @@ let a = createLabels("typescript"); // let a: NameLabel
 let b = createLabels(2.8); // let b: IdLabel
  
 let c = createLabels(Math.random() ? "hello" : 42); // let c: NameLabel | IdLabel
+
+
+// 1. Conditional Type Constraints
+type MessageOf<T> = T extends { message: unknown } ? T["message"] : never;
+ 
+interface Email {
+  message: string;
+}
+ 
+interface Dog {
+  bark(): void;
+}
+ 
+type EmailMessageContents = MessageOf<Email>; // type EmailMessageContents = string
+ 
+type DogMessageContents = MessageOf<Dog>; // type DogMessageContents = never
