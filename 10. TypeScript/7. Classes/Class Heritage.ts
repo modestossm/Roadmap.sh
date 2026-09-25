@@ -90,3 +90,24 @@ class DogHouse extends AnimalHouse {
     super(dog);
   }
 }
+
+
+// 2.2.3 Initialization Order
+// The order of class initialization, as defined by JavaScript, is:
+// The base class fields are initialized, then the base class constructor runs
+// The derived class fields are initialized, then the derived class constructor runs
+
+class Base2 {
+  name = "base";
+  constructor() {
+    console.log("My name is " + this.name);
+  }
+}
+ 
+class Derived2 extends Base {
+  name = "derived";
+}
+ 
+// Prints "base", not "derived"
+const d2 = new Derived();
+
