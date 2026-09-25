@@ -69,3 +69,16 @@ class Points2 {
   }
 }
 
+
+// 1.4 Methods
+// Methods can use all the same type annotations as functions and constructors:
+
+class Point2 {
+  x = 10;
+  y = 10;
+ 
+  scale(n: number): void {
+    this.x *= n;
+    // y *= n; // Error: Cannot find name 'y'. Did you mean the instance member 'this.y'?
+  }
+}
