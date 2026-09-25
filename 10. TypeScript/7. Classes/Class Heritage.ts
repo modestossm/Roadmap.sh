@@ -64,3 +64,29 @@ class Derived extends Base {
 // greet(name: string) makes the argument mandatory → the subclass is more demanding/restrictive than the base class → error.
 
 
+// 2.2.2 Type-only Field Declarations
+// We can write declare to indicate to TypeScript that there should be no runtime effect for this field declaration.
+
+interface Animal {
+  dateOfBirth: any;
+}
+ 
+interface Dog extends Animal {
+  breed: any;
+}
+ 
+class AnimalHouse {
+  resident: Animal;
+  constructor(animal: Animal) {
+    this.resident = animal;
+  }
+}
+ 
+class DogHouse extends AnimalHouse {
+  // Does not emit JavaScript code,
+  // only ensures the types are correct
+  declare resident: Dog;
+  constructor(dog: Dog) {
+    super(dog);
+  }
+}
