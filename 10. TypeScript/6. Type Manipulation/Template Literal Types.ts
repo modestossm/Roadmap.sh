@@ -81,3 +81,35 @@ person2.on("ageChanged", newAge => {
 // Once TypeScript figures that out, the on method can fetch the type of firstName on the original object, 
 // which is string in this case. Similarly, when called with "ageChanged", 
 // TypeScript finds the type for the property age which is number.
+
+
+// 3. Intrinsic String Manipulation Types
+
+// 3.1 Uppercase<StringType>
+// Converts each character in the string to the uppercase version
+type Greeting2 = "Hello, world"
+type ShoutyGreeting = Uppercase<Greeting> // type ShoutyGreeting = "HELLO, WORLD"
+ 
+type ASCIICacheKey<Str extends string> = `ID-${Uppercase<Str>}`
+type MainID = ASCIICacheKey<"my_app"> // type MainID = "ID-MY_APP"
+
+
+// 3.2 Lowercase<StringType>]
+// Converts each character in the string to the lowercase equivalent.
+type Greeting3 = "Hello, world"
+type QuietGreeting = Lowercase<Greeting> // type QuietGreeting = "hello, world"
+ 
+type ASCIICacheKey2<Str extends string> = `id-${Lowercase<Str>}`
+type MainID2 = ASCIICacheKey<"MY_APP"> // type MainID2 = "id-my_app"
+
+
+// 3.3 Capitalize<StringType>
+// Converts the first character in the string to an uppercase equivalent.
+type LowercaseGreeting = "hello, world";
+type Greeting4 = Capitalize<LowercaseGreeting>; // type Greeting4 = "Hello, world"
+
+
+// 3.4 Uncapitalize<StringType>
+// Converts the first character in the string to a lowercase equivalent.
+type UppercaseGreeting = "HELLO WORLD";
+type UncomfortableGreeting = Uncapitalize<UppercaseGreeting>; // type UncomfortableGreeting = "hELLO WORLD"
