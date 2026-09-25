@@ -47,3 +47,37 @@ person.on("firstNameChanged", () => {});
  
 // It's typo-resistant:
 // person.on("frstNameChanged", () => {}); // Error: Argument of type '"frstNameChanged"' is not assignable to parameter of type '"firstNameChanged" | "lastNameChanged" | "ageChanged"'.
+
+
+// 2. Inference with Template Literals
+type PropEventSource2<Type> = {
+    on<Key extends string & keyof Type>
+        (eventName: `${Key}Changed`, callback: (newValue: Type[Key]) => void): void;
+};
+ 
+declare function makeWatchedObject<Type>(obj: Type): Type & PropEventSource2<Type>;
+ 
+const person2 = makeWatchedObject({
+  firstName: "Saoirse",
+  lastName: "Ronan",
+  age: 26
+});
+ 
+person2.on("firstNameChanged", newName => {
+    // (parameter) newName: string
+    console.log(`new name is ${newName.toUpperCase()}`);
+});
+ 
+person2.on("ageChanged", newAge => {
+    // (parameter) newAge: number
+    if (newAge < 0) {
+        console.warn("warning! negative age");
+    }
+})
+
+// Here we made on into a generic method.
+// When a user calls with the string "firstNameChanged", TypeScript will try to infer the right type for Key.
+// To do that, it will match Key against the content before "Changed" and infer the string "firstName".
+// Once TypeScript figures that out, the on method can fetch the type of firstName on the original object, 
+// which is string in this case. Similarly, when called with "ageChanged", 
+// TypeScript finds the type for the property age which is number.
