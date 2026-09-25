@@ -82,3 +82,21 @@ class Point2 {
     // y *= n; // Error: Cannot find name 'y'. Did you mean the instance member 'this.y'?
   }
 }
+
+
+// 1.5 Getters / Setters
+// Classes can also have accessors:
+
+class C {
+  _length = 0;
+
+  // If get exists but no set, the property is automatically readonly
+  get length() {
+    return this._length;
+  }
+
+  // If the type of the setter parameter is not specified, it is inferred from the return type of the getter
+  set length(value) {
+    this._length = value;
+  }
+}
