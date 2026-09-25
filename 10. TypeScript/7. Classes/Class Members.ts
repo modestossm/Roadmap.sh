@@ -100,3 +100,15 @@ class C {
     this._length = value;
   }
 }
+
+
+// 1.6 Index Signatures
+// Classes can declare index signatures; these work the same as Index Signatures for other object types:
+
+class MyClass {
+  [s: string]: boolean | ((s: string) => boolean);
+ 
+  check(s: string) {
+    return this[s] as boolean;
+  }
+}
