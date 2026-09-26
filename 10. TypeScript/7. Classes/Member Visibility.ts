@@ -14,7 +14,7 @@ const g3 = new Greeter3();
 g3.greet();
 
 
-// 3.1 protected
+// 3.2 protected
 // protected members are only visible to subclasses of the class they’re declared in:
 
 class Greeter4 {
@@ -38,7 +38,7 @@ g4.greet(); // OK
 
 // Exposure of protected members:
 // Derived classes need to follow their base class contracts, 
-// but may choose to expose a subtype of base class with more capabilities. This includes making protected members public:
+// but may choose to expose a subtype of base class with more capabilities. This includes making protected members public.
 
 class Base5 {
   protected m = 10;
@@ -49,4 +49,34 @@ class Derived5 extends Base5 {
 }
 const d5 = new Derived5();
 console.log(d5.m); // OK
+
+// Cross-hierarchy protected access:
+// TypeScript doesn’t allow accessing protected members of a sibling class in a class hierarchy:
+
+class Base6 {
+  protected x: number = 1;
+}
+class Deriveds1 extends Base6 {
+  protected x: number = 5;
+}
+class Deriveds2 extends Base6 {
+  f1(other: Deriveds2) {
+    other.x = 10;
+  }
+  f2(other: Deriveds1) {
+    // other.x = 10; // Error: Property 'x' is protected and only accessible within class 'Derived1' and its subclasses.
+  }
+}
+
+
+
+// 3.3 private
+// private is like protected, but doesn’t allow access to the member even from subclasses:
+
+class Base7 {
+  private x = 0;
+}
+const b = new Base7();
+// Can't access from outside the class
+// console.log(b.x); // Error: Property 'x' is private and only accessible within class 'Base'.
 

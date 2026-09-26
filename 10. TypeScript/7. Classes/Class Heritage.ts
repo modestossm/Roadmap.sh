@@ -52,15 +52,15 @@ class Base {
   }
 }
  
-class Derived extends Base {
-    // Make this parameter required:
-    // greet(name: string) {                 // demands 1 arguments → more restrictive → error)
-    //     // Property 'greet' in type 'Derived' is not assignable to the same property in base type 'Base'.
-    //     // Type '(name: string) => void' is not assignable to type '() => void'.
-    //     // Target signature provides too few arguments. Expected 1 or more, but got 0.
-    //     console.log(`Hello, ${name.toUpperCase()}`);
-    // }
-}
+// class Derived extends Base {
+//     Make this parameter required:
+//     greet(name: string) {                 // demands 1 arguments → more restrictive → error)
+//         // Property 'greet' in type 'Derived' is not assignable to the same property in base type 'Base'.
+//         // Type '(name: string) => void' is not assignable to type '() => void'.
+//         // Target signature provides too few arguments. Expected 1 or more, but got 0.
+//         console.log(`Hello, ${name.toUpperCase()}`);
+//     }
+// }
 // greet(name: string) makes the argument mandatory → the subclass is more demanding/restrictive than the base class → error.
 
 
@@ -104,7 +104,7 @@ class Base2 {
   }
 }
  
-class Derived2 extends Base {
+class Derived2 extends Base2 {
   name = "derived";
 }
  
