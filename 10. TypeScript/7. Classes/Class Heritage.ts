@@ -109,5 +109,5 @@ class Derived2 extends Base2 {
 }
  
 // Prints "base", not "derived"
-const d2 = new Derived();
+const d2 = new Derived2();
 

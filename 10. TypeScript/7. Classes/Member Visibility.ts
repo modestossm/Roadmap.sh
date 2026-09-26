@@ -80,3 +80,20 @@ const b = new Base7();
 // Can't access from outside the class
 // console.log(b.x); // Error: Property 'x' is private and only accessible within class 'Base'.
 
+class Derived7 extends Base7 {
+  showX() {
+    // Can't access in subclasses
+    // console.log(this.x); // Error: Property 'x' is private and only accessible within class 'Base'.
+  }
+}
+
+// Cross-instance private access:
+
+class A {
+  private x = 10;
+ 
+  public sameAs(other: A) {
+    // No error
+    return other.x === this.x;
+  }
+}
