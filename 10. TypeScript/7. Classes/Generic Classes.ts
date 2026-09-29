@@ -9,11 +9,11 @@ class Box<Type> {
   }
 }
  
-const b = new Box("hello!"); // const b: Box<string>
+const b1 = new Box("hello!"); // const b: Box<string>
 
 
 // 5.1 Type Parameters in Static Members
 
-class Box<Type> {
-  static defaultValue: Type; // Error: Static members cannot reference class type parameters.
+class Box2<Type> {
+  // static defaultValue: Type; // Error: Static members cannot reference class type parameters.
 }
