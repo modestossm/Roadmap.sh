@@ -11,3 +11,9 @@ class Box<Type> {
  
 const b = new Box("hello!"); // const b: Box<string>
 
+
+// 5.1 Type Parameters in Static Members
+
+class Box<Type> {
+  static defaultValue: Type; // Error: Static members cannot reference class type parameters.
+}
