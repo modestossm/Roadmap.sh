@@ -64,3 +64,54 @@ abstract class BaseA {
 }
  
 // const b = new BaseA(); // Error: Cannot create an instance of an abstract class.
+
+// We can’t instantiate Base with new because it’s abstract.
+// Instead, we need to make a derived class and implement the abstract members:
+
+class Derived extends BaseA {
+  getName() {
+    return "world";
+  }
+}
+ 
+const t = new Derived();
+t.printName();
+
+
+// 7.5 Relationships Between Classes
+// In most cases, classes in TypeScript are compared structurally, the same as other types.
+//For example, these two classes can be used in place of each other because they’re identical:
+
+class Point1 {
+  x = 0;
+  y = 0;
+}
+ 
+class Point2 {
+  x = 0;
+  y = 0;
+}
+ 
+// OK
+const p1: Point1 = new Point2();
+
+// Similarly, subtype relationships between classes exist even if there’s no explicit inheritance:
+
+class Person {
+  // @ts-ignore 
+  name: string;
+  // @ts-ignore 
+  age: number;
+}
+ 
+class Employee {
+  // @ts-ignore 
+  name: string;
+  // @ts-ignore 
+  age: number;
+  // @ts-ignore 
+  salary: number;
+}
+ 
+// OK
+const p2: Person = new Employee();
