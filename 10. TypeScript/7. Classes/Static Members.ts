@@ -37,3 +37,25 @@ const MyHelperObject = {
   dosomething() {},
 };
 
+
+// 4.3 static Blocks in Classes
+// Static blocks allow you to write a sequence of statements with their own scope,
+// that can access private fields within the containing class. 
+
+class Foo {
+    static #count = 0;
+ 
+    get count() {
+        return Foo.#count;
+    }
+ 
+    static {
+        try {
+            // @ts-ignore  
+            const lastInstances = loadLastInstances();
+            
+            Foo.#count += lastInstances.length;
+        }
+        catch {}
+    }
+}
