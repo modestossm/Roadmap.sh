@@ -49,3 +49,18 @@ function moveRight(point: PointInstance) {
 const point = new Point(3, 4);
 moveRight(point);
 point.x; // => 8
+
+
+// 7.4 abstract Classes and Members
+// An abstract method or abstract field is one that hasn’t had an implementation provided. 
+// These members must exist inside an abstract class, which cannot be directly instantiated.
+
+abstract class BaseA {
+  abstract getName(): string;
+ 
+  printName() {
+    console.log("Hello, " + this.getName());
+  }
+}
+ 
+// const b = new BaseA(); // Error: Cannot create an instance of an abstract class.
