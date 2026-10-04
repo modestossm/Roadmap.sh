@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const serverUrl = 'https://localhost:1234';
 
-function createConnection(serverUrl: unknown, roomId: unknown) {
+function createConnection(serverUrl: string, roomId: string) {
 
   return {
     connect() {
@@ -14,8 +14,9 @@ function createConnection(serverUrl: unknown, roomId: unknown) {
   };
 }
 
-// @ts-ignore  
-function ChatRoom({ roomId }) {
+type ChatRoomProps = { roomId: string };
+
+function ChatRoom({ roomId }: ChatRoomProps) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
@@ -28,10 +29,11 @@ export default function Lifecycle() {
   const [roomId, setRoomId] = useState('general');
   const [show, setShow] = useState(false);
   return (
-    <div className="m-20">
+    <div className="m-20 max-w-200">
       <label>
         <b>Choose the chat room:{' '}</b>
-        <select value={roomId} onChange={e => setRoomId(e.target.value)} className='mx-2 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
+        <select value={roomId} onChange={e => setRoomId(e.target.value)} 
+        className='mx-2 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
           <option value="general">general</option>
           <option value="travel">travel</option>
           <option value="music">music</option>

@@ -7,6 +7,7 @@ import AppVideoPlayer from "./components/useEffects";
 import AppPlayground from "./components/useEffect firing twice in dev";
 import Time from "./components/useMemo";
 import Lifecycle from "./components/Lifecycle of Reactive Effects";
+import Chat from "./components/Lifecycle of Reactive Effects II";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <AppPlayground />
       <TodoList />
       <Lifecycle />
+      <Chat />
       <Time />
     </>
   );
