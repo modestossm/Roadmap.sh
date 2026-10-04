@@ -27,19 +27,16 @@ export default function Lifecycle() {
   const [roomId, setRoomId] = useState('general');
   const [show, setShow] = useState(false);
   return (
-    <div >
+    <div className="m-20">
       <label>
-        Choose the chat room:{' '}
-        <select
-          value={roomId}
-          onChange={e => setRoomId(e.target.value)}
-        >
+        <b>Choose the chat room:{' '}</b>
+        <select value={roomId} onChange={e => setRoomId(e.target.value)} className='mx-2 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
           <option value="general">general</option>
           <option value="travel">travel</option>
           <option value="music">music</option>
         </select>
       </label>
-      <button onClick={() => setShow(!show)}>
+      <button onClick={() => setShow(!show)} className='mx-4 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
         {show ? 'Close chat' : 'Open chat'}
       </button>
       {show && <hr />}
