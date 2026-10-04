@@ -14,6 +14,7 @@ function createConnection(serverUrl: unknown, roomId: unknown) {
   };
 }
 
+// @ts-ignore  
 function ChatRoom({ roomId }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
