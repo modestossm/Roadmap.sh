@@ -6,6 +6,7 @@ import TodoList from "./components/Flushing state";
 import AppVideoPlayer from "./components/useEffects";
 import AppPlayground from "./components/useEffect firing twice in dev";
 import Time from "./components/useMemo";
+import Lifecycle from "./components/Lifecycle of Reactive Effects";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <AppVideoPlayer />
       <AppPlayground />
       <TodoList />
+      <Lifecycle />
       <Time />
     </>
   );
