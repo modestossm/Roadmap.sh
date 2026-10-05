@@ -31,7 +31,7 @@ export default function Lifecycle() {
   return (
     <div className="m-20 max-w-200">
       <label>
-        <b>Choose the chat room:{' '}</b>
+        <b>1. Choose the chat room:{' '}</b>
         <select value={roomId} onChange={e => setRoomId(e.target.value)} 
         className='mx-2 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
           <option value="general">general</option>
