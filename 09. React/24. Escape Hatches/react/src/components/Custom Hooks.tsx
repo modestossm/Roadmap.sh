@@ -35,7 +35,7 @@ function SaveButton() {
   }
 
   return (
-    <button disabled={!isOnline} onClick={handleSaveClick}>
+    <button disabled={!isOnline} onClick={handleSaveClick} className='mt-20 mb-2 px-4 py-2 rounded text-white bg-blue-500'>
       {isOnline ? 'Save progress' : 'Reconnecting...'}
     </button>
   );
@@ -43,9 +43,9 @@ function SaveButton() {
 
 export default function OnlineStatus() {
   return (
-    <>
+    <div className="m-20 max-w-200">
       <SaveButton />
       <StatusBar />
-    </>
+    </div>
   );
 }
