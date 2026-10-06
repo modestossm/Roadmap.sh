@@ -9,6 +9,7 @@ import Time from "./components/useMemo";
 import Lifecycle from "./components/Lifecycle of Reactive Effects";
 import Chat from "./components/Lifecycle of Reactive Effects II";
 import EffectEvent from "./components/useEffectEvent";
+import OnlineStatus from "./components/Custom Hooks";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
       <TodoList />
       <Lifecycle />
       <Chat />
-      <EffectEvent />  
+      <EffectEvent /> 
+      <OnlineStatus /> 
       <Time />
     </>
   );
