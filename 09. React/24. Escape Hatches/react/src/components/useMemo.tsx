@@ -22,13 +22,15 @@ export default function Time() {
     }, [arr]);
 
     const filtered = useMemo(() => {
+        {/* eslint-disable-next-line */}
         const start = performance.now();
         const result = arr.filter((n) => {
-            // trabalho artificial pra deixar o cálculo perceptível
             let x = 0;
+            {/* eslint-disable-next-line */}
             for (let i = 0; i < 3000; i++) x += Math.sqrt(i);
             return String(n).includes(terms);
         });
+        {/* eslint-disable-next-line */}
         console.log(`useMemo recalculou 'filtered' em: ${(performance.now() - start).toFixed(2)}ms`);
         return result;
     }, [arr, terms]);
