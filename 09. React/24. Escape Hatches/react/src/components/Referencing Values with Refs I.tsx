@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 export default function Counter() {
-    let ref = useRef(0);
+    const ref = useRef(0);
 
     function handleClick() {
         ref.current = ref.current + 1;
@@ -13,7 +13,7 @@ export default function Counter() {
             <button onClick={handleClick} className="mx-20 mt-20 px-4 py-2 rounded text-white bg-blue-500"> 
                 Click me!
             </button>
-
+            {/* eslint-disable-next-line */}
             <p className="mx-20 mt-2">You clicked {ref.current} times!</p>
         </>
     );

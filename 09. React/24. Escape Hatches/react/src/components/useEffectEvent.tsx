@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useEffectEvent } from 'react';
 
+const serverUrl = 'https://localhost:1234';
+
 function showNotification(message: string, theme: string) {
   console.log(`Notification (${theme}): ${message}`);
 }
-
-export function createConnection(serverUrl: string, roomId: string) {
+{/* eslint-disable-next-line */}
+function createConnection(serverUrl: string, roomId: string) {
   let connectedCallback: (() => void) | undefined;
   let timeout: ReturnType<typeof setTimeout>;
   
@@ -31,8 +33,6 @@ export function createConnection(serverUrl: string, roomId: string) {
     }
   };
 }
-
-const serverUrl = 'https://localhost:1234';
 
 type ChatRoomProps = {
   roomId: string;
