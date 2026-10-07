@@ -7,7 +7,7 @@ export default function TodoList() {
   const [todos, setTodos] = useState(
     initialTodos
   );
-
+  {/* eslint-disable-next-line */}
   const list = listRef.current;
   const lastChild = list?.lastChild as Element | null;
 
@@ -43,6 +43,7 @@ export default function TodoList() {
 }
 
 let nextId = 0;
+{/* eslint-disable-next-line */}
 let initialTodos: { id: number; text: string }[] = [];
 for (let i = 0; i < 20; i++) {
   initialTodos.push({
