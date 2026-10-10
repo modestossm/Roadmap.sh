@@ -1,16 +1,14 @@
 .header {
   display: flex;
-  flex-direction: column;
   gap: 3rem;
-  margin: 3rem auto;
+  margin: 6rem auto;
   width: 90%;
   max-width: 75rem;
-  align-items: end;
 }
 
 .slideshow {
   width: 40rem;
-  height: 5rem;
+  height: 25rem;
 }
 
 .hero {
