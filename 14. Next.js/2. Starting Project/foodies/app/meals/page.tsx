@@ -25,7 +25,7 @@ export default  function MealsPage() {
             </header>
 
             <main className={classes.main}>
-                <Suspense>
+                <Suspense fallback={<p className={classes.loading}>Fetching meals...</p>}>
                     <Meals />
                 </Suspense>
             </main>
