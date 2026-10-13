@@ -12,7 +12,9 @@
     "better-sqlite3": "^13.0.3",
     "next": "16.4.0",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "slugify": "^1.6.9",
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
