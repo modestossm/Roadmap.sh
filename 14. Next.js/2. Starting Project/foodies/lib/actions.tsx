@@ -1,14 +1,17 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { saveMeal, type NewMeal } from "./meals";
-import MealDetails from "@/app/meals/[mealSlug]/page";
 
-function isInvalidText(text) {
+function isInvalidText(text: string) {
     return !text || text.trim() === "";
 }
 
-export async function shareMeal(formData: FormData) {
+export async function shareMeal(
+    prevState: { message: string },
+    formData: FormData
+) {
 
     const meal: NewMeal = {
       title: formData.get("title")?.toString() ?? "",
@@ -25,10 +28,14 @@ export async function shareMeal(formData: FormData) {
         isInvalidText(meal.creator) || 
         isInvalidText(meal.creator_email) || 
         !meal.creator_email.includes("@") || 
-        !meal.image
+        !meal.image || meal.image.size === 0 
     ) {
+        return {
+            message: "Invalid input."
+        };
     }
 
     await saveMeal(meal);
+    revalidatePath("/meals", "layout");
     redirect("/meals");
 }
