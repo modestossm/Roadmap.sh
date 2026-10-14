@@ -34,7 +34,9 @@ async function MealContent({
         <>
             <header className={classes.header}>
                 <div className={classes.image}>
-                    <Image src={meal.image} alt={meal.title} fill />
+                    <Image src={`https://nextjs-app-imagens.s3.us-east-2.amazonaws.com/${meal.image}`}
+                        alt={meal.title}
+                        fill />
                 </div>
 
                 <div className={classes.headerText}>
