@@ -1,25 +1,36 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import { Suspense } from "react";
 
 interface PageParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function NewsPage({params}: PageParams) {
-    const newsSlug = params.slug;
-    const newsItem = DUMMY_NEWS.find(newsItem => newsItem.slug === newsSlug)
+async function NewsContent({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const newsItem = DUMMY_NEWS.find((item) => item.slug === slug);
 
-    return (
-        <>
-          <article className="news-article">
-            <header>
-              <img src={`/images/news/${newsItem!.image}`} alt={newsItem!.title} />
-              <h1>{newsItem!.title}</h1>
-              <time dateTime={newsItem!.date}>{newsItem!.date}</time>
-            </header>
-              <p>{newsItem!.content}</p>
-          </article>
-        </>
-    );
+  if (!newsItem) {
+    return <p>Notícia não encontrada!</p>;
+  }
+
+  return (
+    <article className="news-article">
+      <header>
+        <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+        <h1>{newsItem.title}</h1>
+        <time dateTime={newsItem.date}>{newsItem.date}</time>
+      </header>
+      <p>{newsItem.content}</p>
+    </article>
+  );
+}
+
+export default function NewsPage({ params }: PageParams) {
+  return (
+    <Suspense fallback={<p>Carregando notícia...</p>}>
+      <NewsContent params={params} />
+    </Suspense>
+  );
 }

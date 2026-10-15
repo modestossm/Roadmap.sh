@@ -14,7 +14,7 @@ export const metadata = {
 export default function RootLayout({children}: LayoutProps) {
     return (
         <html lang="en">
-            <body>
+            <body suppressHydrationWarning={true}>
                 <div id="page">
                     <MainHeader/>
                     {children}
