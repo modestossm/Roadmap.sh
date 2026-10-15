@@ -1,4 +1,5 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import Image from "next/image";
 import { Suspense } from "react";
 
 interface PageParams {
@@ -18,7 +19,7 @@ async function NewsContent({ params }: { params: Promise<{ slug: string }> }) {
   return (
     <article className="news-article">
       <header>
-        <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+        <Image src={`/images/news/${newsItem.image}`} alt={newsItem.title} width={125} height={125} />
         <h1>{newsItem.title}</h1>
         <time dateTime={newsItem.date}>{newsItem.date}</time>
       </header>
