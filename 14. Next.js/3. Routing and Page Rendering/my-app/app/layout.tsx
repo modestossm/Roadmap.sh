@@ -13,7 +13,11 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <div id="page">
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
