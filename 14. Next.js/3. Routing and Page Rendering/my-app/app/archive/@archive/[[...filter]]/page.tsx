@@ -1,5 +1,5 @@
 import NewsList from "@/components/news-list";
-import { getNewsForYear, getAvailableNewsYears, getAvailableNewsMonths } from "@/lib/news";
+import { getNewsForYear, getAvailableNewsYears, getAvailableNewsMonths, getNewsForYearAndMonth } from "@/lib/news";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -23,6 +23,11 @@ async function FilteredNews({ params }: { params: Promise<{ filter: string[] }> 
         links = getAvailableNewsMonths(selectedYear);
     }
 
+    if (selectedYear && selectedMonth) {
+        news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+        links = [];
+    }
+
     let newsContent = <p>No news for the selected period.</p>;
 
     if (news && news.length > 0) {
@@ -34,7 +39,12 @@ async function FilteredNews({ params }: { params: Promise<{ filter: string[] }> 
             <header id="archive-header">
                 <nav>
                     <ul>
-                        {links.map(link => <li key={link}> <Link href={`/archive/${link}`}>{link}</Link> </li>)}
+                        {links.map(link => {
+                            const href = selectedYear ? `/archive/${selectedYear}/${link}` : `/archive/${link}`;
+
+                            return (
+                            <li key={link}> <Link href={href}>{link}</Link> </li>
+                        )})}
                     </ul>
                 </nav>
             </header>
