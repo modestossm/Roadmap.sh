@@ -1,4 +1,3 @@
-import NewsList from "@/components/news-list";
 import { getLatestNews } from "@/lib/news";
 import Link from "next/link";
 
@@ -10,7 +9,9 @@ export default function Default() {
 
             <ul>
                 {latest.map(last => (
-                    <Link key={last.id}> {last} </Link>
+                    <li key={last.id}>
+                        <Link href={`/news/${last.slug}`}>{last.title}</Link>
+                    </li>
                 ))}
             </ul>
         </>

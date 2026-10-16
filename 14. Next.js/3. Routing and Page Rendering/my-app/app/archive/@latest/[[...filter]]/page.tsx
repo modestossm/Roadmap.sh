@@ -1,8 +1,7 @@
 import NewsList from "@/components/news-list";
 import { getLatestNews } from "@/lib/news";
-import Link from "next/link";
 
-export default function Default() {
+export default function LatestNews() {
     const latest = getLatestNews();
     return (
         <>
