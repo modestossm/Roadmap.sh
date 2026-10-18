@@ -8,7 +8,6 @@ interface LayoutProps {
 export default function NewsLayout({ children }: LayoutProps) {
     return (
         <div id="page">
-            <MainHeader />
             {children}
         </div>
     );

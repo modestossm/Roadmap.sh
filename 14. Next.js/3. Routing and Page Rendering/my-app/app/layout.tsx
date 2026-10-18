@@ -1,5 +1,6 @@
-import './globals.css';
 import { ReactNode } from 'react';
+import MainHeader from '@/components/mainHeader';
+import './globals.css';
 
 export const metadata = {
   title: 'Next.js Page Routing & Rendering',
@@ -13,7 +14,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body>
+        <MainHeader />
         <div id="page">
           {children}
         </div>
