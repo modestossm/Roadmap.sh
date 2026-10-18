@@ -26,11 +26,17 @@ ul {
   margin: 2rem auto;
 }
 
-#main-header {
+#main-header { 
+  align-items: center;
+  padding: 2rem 0 2rem 0;
+  background-color: #2d2d2b;
+}
+
+#main-header-div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  margin: 0 auto 0 auto;
+  max-width: 80%;
 }
 
 #logo {
