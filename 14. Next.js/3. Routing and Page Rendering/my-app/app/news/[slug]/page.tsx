@@ -1,6 +1,8 @@
 import { DUMMY_NEWS } from "@/dummy-news";
-import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface PageParams {
   params: Promise<{
@@ -10,16 +12,19 @@ interface PageParams {
 
 async function NewsContent({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
   const newsItem = DUMMY_NEWS.find((item) => item.slug === slug);
 
   if (!newsItem) {
-    return <p>Notícia não encontrada!</p>;
+      notFound();
   }
 
   return (
     <article className="news-article">
-      <header>
-        <Image src={`/images/news/${newsItem.image}`} alt={newsItem.title} width={125} height={125} />
+      <header> 
+        <Link href={`/news/${newsItem.slug}/image`}>
+          <Image src={`/images/news/${newsItem.image}`} alt={newsItem.title} width={125} height={125} />
+        </Link>
         <h1>{newsItem.title}</h1>
         <time dateTime={newsItem.date}>{newsItem.date}</time>
       </header>
