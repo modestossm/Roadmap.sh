@@ -1,8 +1,8 @@
 import { DUMMY_NEWS } from "@/dummy-news";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
+import ModalBackdrop from "./modal-backdrop";
 
 export default function InterceptedImagePage({ params }: { params: Promise<{ slug: string }> }) {
     return (
@@ -14,7 +14,6 @@ export default function InterceptedImagePage({ params }: { params: Promise<{ slu
 
 async function ImageContent({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-
     const newsItem = DUMMY_NEWS.find((item) => item.slug === slug);
 
     if (!newsItem) {
@@ -22,14 +21,12 @@ async function ImageContent({ params }: { params: Promise<{ slug: string }> }) {
     }
 
     return (
-        <>
-            <div className="modal-dialog">
-                <dialog className="modal" open>
-                    <div className="fullscreen-image">
-                        <Image src={`/images/news/${newsItem.image}`} alt={newsItem.title} fill sizes="100vw" style={{ objectFit: "contain" }}/>
-                    </div>
-                </dialog>
-            </div>
-        </>
+        <ModalBackdrop>
+            <dialog className="modal" open>
+                <div className="fullscreen-image">
+                    <Image src={`/images/news/${newsItem.image}`} alt={newsItem.title} fill sizes="100vw" style={{ objectFit: "contain" }}/>
+                </div>
+            </dialog>
+        </ModalBackdrop>
     );
 }
