@@ -1,4 +1,3 @@
-import MainHeader from "@/components/mainHeader";
 import { ReactNode } from 'react';
 
 interface LayoutProps {
