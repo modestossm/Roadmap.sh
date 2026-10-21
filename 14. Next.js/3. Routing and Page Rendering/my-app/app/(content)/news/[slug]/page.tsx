@@ -1,8 +1,8 @@
-import { DUMMY_NEWS } from "@/dummy-news";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getNewsItem } from "@/lib/news";
 
 interface PageParams {
   params: Promise<{
@@ -12,8 +12,7 @@ interface PageParams {
 
 async function NewsContent({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-
-  const newsItem = DUMMY_NEWS.find((item) => item.slug === slug);
+  const newsItem = await getNewsItem(slug);
 
   if (!newsItem) {
       notFound();
