@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import FormSubmit from "./formSubmit";
 
 type FormState = { errors: string[] };
@@ -13,7 +13,7 @@ type PostFormProps = {
 };
 
 export default function PostForm({ action }: PostFormProps) {
-    const [state, formAction] = useFormState(action, { errors: [] });
+    const [state, formAction] = useActionState(action, { errors: [] });
 
     return (
         <>
