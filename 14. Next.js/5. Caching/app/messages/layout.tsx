@@ -1,4 +1,4 @@
-export default async function MessagesLayout({ children }) {
+export default async function MessagesLayout({ children }: { children: React.ReactNode }) {
   const response = await fetch('http://localhost:8080/messages', {
     headers: {
       'X-ID': 'layout',

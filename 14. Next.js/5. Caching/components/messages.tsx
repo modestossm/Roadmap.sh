@@ -1,4 +1,10 @@
-export default function Messages({ messages }) {
+import type { Message } from '@/lib/messages';
+
+type MessagesProps = {
+  messages: Message[];
+};
+
+export default function Messages({ messages }: MessagesProps) {
   return (
     <ul className="messages">
       {messages.map((message) => (
