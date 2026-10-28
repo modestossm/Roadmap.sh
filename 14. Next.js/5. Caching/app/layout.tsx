@@ -6,7 +6,7 @@ export const metadata = {
   description: 'Learn how Next.js caching works',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>

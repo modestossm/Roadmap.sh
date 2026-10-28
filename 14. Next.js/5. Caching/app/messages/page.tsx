@@ -1,4 +1,5 @@
 import Messages from '@/components/messages';
+import type { Message } from '@/lib/messages';
 
 export default async function MessagesPage() {
   const response = await fetch('http://localhost:8080/messages', {
@@ -6,7 +7,7 @@ export default async function MessagesPage() {
       'X-ID': 'page',
     },
   });
-  const messages = await response.json();
+  const messages = (await response.json()) as Message[];
 
   if (!messages || messages.length === 0) {
     return <p>No messages found</p>;

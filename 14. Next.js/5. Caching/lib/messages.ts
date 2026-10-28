@@ -1,5 +1,10 @@
 import sql from 'better-sqlite3';
 
+export type Message = {
+  id: number;
+  text: string;
+};
+
 const db = new sql('messages.db');
 
 function initDb() {
@@ -12,11 +17,11 @@ function initDb() {
 
 initDb();
 
-export function addMessage(message) {
+export function addMessage(message: string) {
   db.prepare('INSERT INTO messages (text) VALUES (?)').run(message);
 }
 
-export function getMessages() {
+export function getMessages(): Message[] {
   console.log('Fetching messages from db');
-  return db.prepare('SELECT * FROM messages').all();
+  return db.prepare('SELECT * FROM messages').all() as Message[];
 }
