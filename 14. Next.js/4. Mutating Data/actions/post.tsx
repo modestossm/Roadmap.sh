@@ -1,10 +1,9 @@
 "use server";
 
 import { uploadImage } from "@/lib/cloudinary";
-import { storePost } from "@/lib/posts";
+import { storePost, updatePostLikeStatus } from "@/lib/posts";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { updatePostLikeStatus } from "@/lib/posts";
 
 export async function createPost(prevState: { errors: string[] }, formData: FormData) {
 
@@ -30,16 +29,17 @@ export async function createPost(prevState: { errors: string[] }, formData: Form
     return {errors};
     }
 
-    let imageURL;
+    let imageURL: string;
 
     try {
         imageURL = await uploadImage(image);
     } catch (error) {
+        console.error("Image upload failed", error);
         throw new Error("Image upload failed, post was not created. Please try again later!");
     }
 
     await storePost({
-    imageUrl: typeof image === "string" ? image : "",
+    imageUrl: imageURL,
     title,
     content,
     userId: 1
