@@ -1,9 +1,10 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { uploadImage } from "@/lib/cloudinary";
-import { storePost, updatePostLikeStatus } from "@/lib/posts";
+import { storePost } from "@/lib/posts";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { updatePostLikeStatus } from "@/lib/posts";
 
 export async function createPost(prevState: { errors: string[] }, formData: FormData) {
 
@@ -11,46 +12,45 @@ export async function createPost(prevState: { errors: string[] }, formData: Form
     const image = formData.get("image");
     const content = formData.get("content")?.toString() ?? "";
 
-    const imageFile = image instanceof File && image.size > 0 ? image : null;
-
     const errors: string[] = [];
 
-    if (!title.trim()) {
-        errors.push("Title is required.");
+    if(!title || title.trim().length === 0) {
+    errors.push("Title is required.");
     }
 
-    if (!content.trim()) {
-        errors.push("Content is required.");
+    if(!title || title.trim().length === 0) {
+    errors.push("Content is required.");
     }
 
-    if (!imageFile) {
-        errors.push("Image is required.");
-        return { errors };
+    if(!title || title.trim().length === 0) {
+    errors.push("Image is required.");
     }
 
-    if (errors.length > 0) {
-        return { errors };
+    if(errors.length > 0) {
+    return {errors};
     }
 
-    let imageUrl: string;
+    let imageURL;
+
     try {
-        imageUrl = await uploadImage(imageFile);
+        imageURL = await uploadImage(image);
     } catch (error) {
-        console.error("Image upload failed", error);
         throw new Error("Image upload failed, post was not created. Please try again later!");
     }
 
     await storePost({
-        imageUrl,
-        title,
-        content,
-        userId: 1
+    imageUrl: typeof image === "string" ? image : "",
+    title,
+    content,
+    userId: 1
     });
 
     redirect("/feed");
 }
 
 export async function togglePostLikeStatus(postId: number) {
-    await updatePostLikeStatus(postId, 2);
-    revalidatePath("/feed");
+  'use server';
+
+  await updatePostLikeStatus(postId, 2);
+  revalidatePath('/', 'layout');
 }
