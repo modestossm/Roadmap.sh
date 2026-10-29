@@ -1,3 +1,4 @@
+import { updateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { addMessage } from '@/lib/messages';
@@ -13,6 +14,7 @@ export default function NewMessagePage() {
     }
 
     addMessage(message);
+    updateTag('messages');
     redirect('/messages');
   }
 
