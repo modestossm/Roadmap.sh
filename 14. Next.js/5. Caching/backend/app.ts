@@ -5,19 +5,26 @@ type Message = { id: number; text: string };
 
 const app = express();
 
-const db = new sql('messages.db');
+function getMessages(): Message[] {
+  const db = new sql('messages.db');
 
-db.exec(`
-  CREATE TABLE IF NOT EXISTS messages (
-    id INTEGER PRIMARY KEY,
-    text TEXT
-  )`);
+  try {
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS messages (
+        id INTEGER PRIMARY KEY,
+        text TEXT
+      )`);
+
+    return db.prepare('SELECT * FROM messages').all() as Message[];
+  } finally {
+    db.close();
+  }
+}
 
 app.get('/messages', (req, res) => {
   const requestSource = req.headers['x-id'];
   console.log(`${new Date().toISOString()}: EXECUTING /messages on backend from ${requestSource}`);
-  const messages = db.prepare('SELECT * FROM messages').all() as Message[];
-  res.json(messages);
+  res.json(getMessages());
 });
 
 app.listen(8080);
