@@ -6,25 +6,40 @@ export type Message = {
   text: string;
 };
 
-const db = new sql('messages.db');
+const DB_PATH = 'messages.db';
 
-function initDb() {
+function openDb() {
+  const db = new sql(DB_PATH);
+
   db.exec(`
     CREATE TABLE IF NOT EXISTS messages (
-      id INTEGER PRIMARY KEY, 
+      id INTEGER PRIMARY KEY,
       text TEXT
     )`);
+
+  return db;
 }
 
-initDb();
-
 export function addMessage(message: string) {
-  db.prepare('INSERT INTO messages (text) VALUES (?)').run(message);
+  const db = openDb();
+
+  try {
+    db.prepare('INSERT INTO messages (text) VALUES (?)').run(message);
+  } finally {
+    db.close();
+  }
 }
 
 export function getMessages(): Message[] {
   console.log('Fetching messages from db');
-  return db.prepare('SELECT * FROM messages').all() as Message[];
+
+  const db = openDb();
+
+  try {
+    return db.prepare('SELECT * FROM messages').all() as Message[];
+  } finally {
+    db.close();
+  }
 }
 
 export async function getMessagesFromBackend(source: 'page' | 'layout'): Promise<Message[]> {
