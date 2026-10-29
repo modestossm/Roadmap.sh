@@ -1,11 +1,17 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 
 import FormSubmit from '@/components/form-submit';
 
-export default function PostForm({ action }) {
-  const [state, formAction] = useFormState(action, {});
+type FormState = { errors: string[] };
+
+type PostFormProps = {
+  action: (prevState: FormState, formData: FormData) => Promise<FormState>;
+};
+
+export default function PostForm({ action }: PostFormProps) {
+  const [state, formAction] = useActionState(action, { errors: [] });
 
   return (
     <>
@@ -26,11 +32,11 @@ export default function PostForm({ action }) {
         </p>
         <p className="form-control">
           <label htmlFor="content">Content</label>
-          <textarea id="content" name="content" rows="5" />
+          <textarea id="content" name="content" rows={5} />
         </p>
-        <p className="form-actions">
+        <div className="form-actions">
           <FormSubmit />
-        </p>
+        </div>
         {state.errors && (
           <ul className="form-errors">
             {state.errors.map((error) => (
