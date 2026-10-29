@@ -1,3 +1,4 @@
+import { cacheTag } from 'next/cache';
 import sql from 'better-sqlite3';
 
 export type Message = {
@@ -28,6 +29,7 @@ export function getMessages(): Message[] {
 
 export async function getMessagesFromBackend(source: 'page' | 'layout'): Promise<Message[]> {
   'use cache';
+  cacheTag('messages');
 
   const response = await fetch('http://localhost:8080/messages', {
     headers: {
