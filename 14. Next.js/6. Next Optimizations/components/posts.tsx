@@ -18,11 +18,27 @@ interface Post {
   isLiked: number;
 }
 
+interface ImageLoaderConfig {
+  src: string;
+  width?: number;
+  quality?: number;
+}
+
+function imageLoader({ src, width, quality }: ImageLoaderConfig) {
+  const actualWidth = width ?? 200; // fallback if undefined
+  const actualQuality = quality ?? 75; // fallback if undefined
+  const urlStart = src.split("upload/")[0];
+  const urlEnd = src.split("upload/")[1];
+  const transformation = `w_${actualWidth},h_2700,q_${actualQuality}`;
+
+  return `${urlStart}upload/${transformation}/${urlEnd}`;
+}
+
 function Post({ post, action }: { post: Post; action: (postId: number) => Promise<void> }) {
   return (
     <article className="post">
       <div className="post-image">
-        <Image src={post.image} alt={post.title} fill />
+        <Image loader={imageLoader} src={post.image} alt={post.title} fill quality={50} />
       </div>
       <div className="post-content">
         <header>
