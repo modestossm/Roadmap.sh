@@ -1,11 +1,11 @@
 "use client";
 
 import Link from 'next/link';
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { singup } from '@/actions/authActions';
 
 export default function AuthForm() {
-  const [formState, formAction] = useFormState(singup, { errors: {} as Record<string, string> })
+  const [formState, formAction] = useActionState(singup, { errors: {} as Record<string, string> })
 
   return (
     <form id="auth-form" action={formAction}>

@@ -39,4 +39,6 @@ export async function singup(prevState: { errors: Record<string, string> }, form
 
         throw error;
     }
+
+    return { errors: {} };
 }
