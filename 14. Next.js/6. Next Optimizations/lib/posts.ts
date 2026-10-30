@@ -2,6 +2,22 @@ import sql from 'better-sqlite3';
 
 const db = new sql('posts.db');
 
+/**
+ * Shape of a post as it leaves the database.
+ * Column aliases in the SELECT below define this contract.
+ */
+export type Post = {
+  id: number;
+  image: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  userFirstName: string;
+  userLastName: string;
+  likes: number;
+  isLiked: number;
+};
+
 function initDb() {
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -47,7 +63,7 @@ function initDb() {
 
 initDb();
 
-export async function getPosts(maxNumber) {
+export async function getPosts(maxNumber?: number): Promise<Post[]> {
   let limitClause = '';
 
   if (maxNumber) {
