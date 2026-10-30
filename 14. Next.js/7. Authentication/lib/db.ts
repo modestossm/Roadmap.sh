@@ -26,8 +26,9 @@ db.exec(`
   );
 `);
 
-const hasTrainings =
-  db.prepare('SELECT COUNT(*) as count FROM trainings').get().count > 0;
+const trainingCount =
+  db.prepare<[], { count: number }>('SELECT COUNT(*) as count FROM trainings').get()?.count ?? 0;
+const hasTrainings = trainingCount > 0;
 
 if (!hasTrainings) {
   db.exec(`
