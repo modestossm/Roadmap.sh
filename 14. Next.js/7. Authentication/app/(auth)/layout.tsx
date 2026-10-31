@@ -1,5 +1,6 @@
 import '../globals.css';
 import type { ReactNode } from 'react';
+import { logout } from '@/actions/authActions';
 
 export const metadata = {
   title: 'Next Auth',
@@ -12,7 +13,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <header id="auth-header">
         <p>Welcome back!</p>
 
-        <form action="">
+        <form action={logout}>
           <button>Logout</button>
         </form>
       </header>
