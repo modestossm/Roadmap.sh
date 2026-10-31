@@ -2,15 +2,20 @@
 
 import Link from 'next/link';
 import { useActionState } from 'react';
-import { singup } from '@/actions/authActions';
+import { auth } from '@/actions/authActions';
+import Image from 'next/image';
 
-export default function AuthForm() {
-  const [formState, formAction] = useActionState(singup, { errors: {} as Record<string, string> })
+type AuthFormProps = {
+  mode: 'login' | 'singup';
+};
+
+export default function AuthForm({ mode }: AuthFormProps) {
+  const [formState, formAction] = useActionState(auth.bind(null, mode), { errors: {} as Record<string, string> })
 
   return (
     <form id="auth-form" action={formAction}>
       <div>
-        <img src="/images/auth-icon.jpg" alt="A lock icon" />
+        <Image src="/images/auth-icon.jpg" alt="A lock icon" width={100} height={100}/>
       </div>
       <p>
         <label htmlFor="email">Email</label>
@@ -29,11 +34,12 @@ export default function AuthForm() {
 
       <p>
         <button type="submit">
-          Create Account
+          {mode === "login" ? "Login" : "Create Account"}
         </button>
       </p>
       <p>
-        <Link href="/">Login with existing account.</Link>
+        {mode === 'login' && <Link href="/?mode=singup">Create an account.</Link>}
+        {mode === 'singup' && <Link href="/?mode=login">Login with existing account.</Link>}
       </p>
     </form>
   );

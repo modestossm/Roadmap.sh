@@ -1,6 +1,12 @@
 import db from './db';
 
-export function getTrainings() {
-  const stmt = db.prepare('SELECT * FROM trainings');
-  return stmt.all();
+type Training = {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+};
+
+export function getTrainings(): Training[] {
+  return db.prepare<[], Training>('SELECT * FROM trainings').all();
 }
