@@ -1,9 +1,9 @@
-const lista = 256;
+const lista = 4000000000;
 
 function n() {
     let etapas = 0;
-    while ((2 ** etapas) <= lista)
-        if((2 ** etapas) === lista) {
+    while ((2 ** etapas) !== lista)
+        if((2 ** etapas) >= lista) {
             console.log("Número de etapas:", etapas);
             return etapas;
         } else {
