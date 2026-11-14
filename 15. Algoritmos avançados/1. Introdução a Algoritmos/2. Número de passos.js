@@ -1,14 +1,14 @@
-const lista = 128;
+const lista = 256;
 
 function n() {
-    let passos = 0;
-    while ((2 ** passos) <= lista)
-        if((2 ** passos) === lista) {
-            console.log("O número de passos é:", passos);
-            return passos;
+    let etapas = 0;
+    while ((2 ** etapas) <= lista)
+        if((2 ** etapas) === lista) {
+            console.log("Número de etapas:", etapas);
+            return etapas;
         } else {
-            passos += 1;
-            console.log(passos);
+            etapas += 1;
+            console.log(etapas);
         }
 }
 
