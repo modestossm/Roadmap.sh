@@ -4,28 +4,43 @@ const lista = [
     {"AutorC": 140},
     {"AutorD": 320},
     {"AutorE": 160},
-    {"AutorF": 100},
-    {"AutorG": 180},
-    {"AutorA": 420}
+    {"AutorF": 110},
+    {"AutorG": 100},
+    {"AutorH": 420}
 ]
 
 //console.log(Object.values(lista[1]));
 
 // let a = "";
 
-function ler() {
-    let menor = Object.values(lista[0]);
-    let menorIndice = 0;
+function menorIndice(arr) {
+    let indiceMenor = 0;
+    let menor = Object.values(arr[0])[0];
 
-    for(let i = 0; i <= (lista.length -1); i++) {
+    for (let i = 1; i < arr.length; i++) {
         // a += Object.values(lista[i]) + " ";
-        if (Object.values(lista[i]) < menor) {
-            menorIndice = i;
-            console.log(menorIndice);
-            return menorIndice;
+        const valor = Object.values(arr[i])[0];
+
+        if (valor < menor) {
+            menor = valor;
+            indiceMenor = i;
         }
     }
-    return console.log("");
+
+    // console.log(indiceMenor);
+    return indiceMenor;
 }
 
-ler();
+function ordenacaoPorSelecao(arr) {
+    const restante = [...arr]; // cópia; não altera o array original
+    const listaOrdenada = [];
+
+    while (restante.length > 0) {
+        const indice = menorIndice(restante);
+        listaOrdenada.push(restante.splice(indice, 1)[0]);
+    }
+
+    return listaOrdenada;
+}
+
+console.log(ordenacaoPorSelecao(lista));
