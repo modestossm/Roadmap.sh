@@ -13,4 +13,4 @@ function fat(num) {
 
 }
 
-console.log(fat(5));
+console.log(fat(100));
