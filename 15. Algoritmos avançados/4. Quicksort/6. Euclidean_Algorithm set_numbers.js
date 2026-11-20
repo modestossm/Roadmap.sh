@@ -1,5 +1,5 @@
 /**
- * Recursive function of Euclidean algorithm for two numbers
+ * Recursive function of Euclidean algorithm for set numbers
  * @param {number} a first number
  * @param {number} b second number (base case)
  * @returns {number} GCD (greatest common divisor)
